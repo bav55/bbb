@@ -1,3 +1,4 @@
+
 <?php
 
 if ($object->xpdo) {
@@ -6,6 +7,19 @@ if ($object->xpdo) {
 
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
+            $modelPath = $modx->getOption('bbb_core_path', null, $modx->getOption('core_path') . 'components/bbb/') . 'model/';
+            $modx->addPackage('bbb', $modelPath);
+            $manager = $modx->getManager();
+            $objects = array(
+                'Meetings',
+                'Clients',
+                'ActionTypes',
+                'Actions'
+            );
+            foreach ($objects as $object) {
+                $manager->createObjectContainer($object);
+            }
+        break;
         case xPDOTransport::ACTION_UPGRADE:
             $modelPath = $modx->getOption('bbb_core_path', null, $modx->getOption('core_path') . 'components/bbb/') . 'model/';
             $modx->addPackage('bbb', $modelPath);
