@@ -3,12 +3,12 @@
 $chunks = array();
 
 $tmp = array(
-	'tpl.bbb.item' => array(
-		'file' => 'item',
+	'tpl.bbb.Meetings' => array(
+		'file' => 'Meetings',
 		'description' => '',
 	),
-	'tpl.bbb.office' => array(
-		'file' => 'office',
+	'tpl.bbb.bbb' => array(
+		'file' => 'bbb',
 		'description' => '',
 	),
 );

@@ -10,7 +10,7 @@ bbb.window.CreateItem = function (config) {
 		url: bbb.config.connector_url,
 		baseParams: {
 			action: 'bbb/processor',
-			method: 'item/create',
+			method: 'Meetings/create',
 		},
 		fields: this.getFields(config),
 		keys: this.getKeys(config),
@@ -73,7 +73,7 @@ bbb.window.UpdateItem = function (config) {
 		url: bbb.config.connector_url,
 		baseParams: {
 			action: 'bbb/processor',
-			method: 'item/update',
+			method: 'Meetings/update',
 		},
 		fields: this.getFields(config),
 		keys: this.getKeys(config),

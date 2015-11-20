@@ -13,13 +13,13 @@ class officeModExtraController extends officeDefaultController {
 		}
 		else {
 			$this->config = array_merge(array(
-				'tplOuter' => 'tpl.bbb.office',
+				'tplOuter' => 'tpl.bbb.bbb',
 			), $config);
 
 			$_SESSION['Office']['bbb'] = $this->config;
 		}
 
-		$this->office->config['processorsPath'] = MODX_CORE_PATH . 'components/bbb/processors/office/';
+		$this->office->config['processorsPath'] = MODX_CORE_PATH . 'components/bbb/processors/bbb/';
 	}
 
 
@@ -58,10 +58,10 @@ class officeModExtraController extends officeDefaultController {
 		*/
 
 		$config = $this->office->makePlaceholders($this->office->config);
-		if ($css = trim($this->modx->getOption('office_bbb_frontend_css', null, MODX_ASSETS_URL . 'components/office/css/main/default.css', true))) {
+		if ($css = trim($this->modx->getOption('office_bbb_frontend_css', null, MODX_ASSETS_URL . 'components/bbb/css/main/default.css', true))) {
 			$this->modx->regClientCSS(str_replace($config['pl'], $config['vl'], $css));
 		}
-		if ($js = trim($this->modx->getOption('office_bbb_frontend_js', null, MODX_ASSETS_URL . 'components/bbb/js/office/default.js'))) {
+		if ($js = trim($this->modx->getOption('office_bbb_frontend_js', null, MODX_ASSETS_URL . 'components/bbb/js/bbb/default.js'))) {
 			$this->office->addClientExtJS();
 			$this->office->addClientLexicon(array(
 				'bbb:default',
@@ -70,9 +70,9 @@ class officeModExtraController extends officeDefaultController {
 			$this->office->addClientJs(array(
 				MODX_ASSETS_URL . 'components/bbb/js/mgr/bbb.js',
 				MODX_ASSETS_URL . 'components/bbb/js/mgr/misc/utils.js',
-				MODX_ASSETS_URL . 'components/bbb/js/office/home.panel.js',
-				MODX_ASSETS_URL . 'components/bbb/js/office/items.grid.js',
-				MODX_ASSETS_URL . 'components/bbb/js/office/items.windows.js',
+				MODX_ASSETS_URL . 'components/bbb/js/bbb/home.panel.js',
+				MODX_ASSETS_URL . 'components/bbb/js/bbb/items.grid.js',
+				MODX_ASSETS_URL . 'components/bbb/js/bbb/items.windows.js',
 				str_replace($config['pl'], $config['vl'], $js),
 			), 'bbb/all');
 		}

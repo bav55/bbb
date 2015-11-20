@@ -2,7 +2,19 @@
 
 $settings = array();
 
-$tmp = array(/*
+$tmp = array(
+    'config_security_salt' => array(
+        'xtype' => 'textfield',
+        'value' => '6a5e9d7456552d0f78cfb57575c7b418',
+        'area' => ''
+    ),
+    'config_server_base_url' => array(
+        'xtype' => 'textfield',
+        'value' => 'http://web-meeting.ru/bigbluebutton/',
+        'area' => ''
+    ),
+
+    /*
 	'some_setting' => array(
 		'xtype' => 'combo-boolean',
 		'value' => true,

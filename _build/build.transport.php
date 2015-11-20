@@ -143,6 +143,7 @@ if (defined('BUILD_POLICY_TEMPLATE_UPDATE')) {
 }
 
 /* load menus */
+
 if (defined('BUILD_MENU_UPDATE')) {
 	$menus = include $sources['data'] . 'transport.menu.php';
 	$attributes = array(

@@ -7,7 +7,7 @@ bbb.grid.Items = function (config) {
 		url: bbb.config.connector_url,
 		baseParams: {
 			action: 'bbb/processor',
-			method: 'item/getlist',
+			method: 'Meetings/getlist',
 		},
 		multi_select: true,
 		viewConfig: {
@@ -18,7 +18,7 @@ bbb.grid.Items = function (config) {
 			scrollOffset: 0,
 			getRowClass: function (rec, ri, p) {
 				return !rec.data.active
-					? 'office-grid-row-disabled'
+					? 'bbb-grid-row-disabled'
 					: '';
 			}
 		},
@@ -65,7 +65,7 @@ Ext.extend(bbb.grid.Items, OfficeExt.grid.Default, {
 			url: this.config.url,
 			params: {
 				action: 'bbb/processor',
-				method: 'item/get',
+				method: 'Meetings/get',
 				id: id,
 			},
 			listeners: {
@@ -107,7 +107,7 @@ Ext.extend(bbb.grid.Items, OfficeExt.grid.Default, {
 			url: this.config.url,
 			params: {
 				action: 'bbb/processor',
-				method: 'item/remove',
+				method: 'Meetings/remove',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -130,7 +130,7 @@ Ext.extend(bbb.grid.Items, OfficeExt.grid.Default, {
 			url: this.config.url,
 			params: {
 				action: 'bbb/processor',
-				method: 'item/disable',
+				method: 'Meetings/disable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -152,7 +152,7 @@ Ext.extend(bbb.grid.Items, OfficeExt.grid.Default, {
 			url: this.config.url,
 			params: {
 				action: 'bbb/processor',
-				method: 'item/enable',
+				method: 'Meetings/enable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {

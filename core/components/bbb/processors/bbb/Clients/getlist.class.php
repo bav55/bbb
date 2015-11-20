@@ -3,10 +3,10 @@
 /**
  * Get a list of Items
  */
-class bbbItemGetListProcessor extends modObjectGetListProcessor {
-	public $objectType = 'bbbItem';
-	public $classKey = 'bbbItem';
-	public $defaultSortField = 'id';
+class ClientGetListProcessor extends modObjectGetListProcessor {
+	public $objectType = 'Client';
+	public $classKey = 'Client';
+	public $defaultSortField = 'id_client';
 	public $defaultSortDirection = 'DESC';
 	//public $permission = 'list';
 
@@ -25,25 +25,6 @@ class bbbItemGetListProcessor extends modObjectGetListProcessor {
 		return true;
 	}
 
-
-	/**
-	 * @param xPDOQuery $c
-	 *
-	 * @return xPDOQuery
-	 */
-	public function prepareQueryBeforeCount(xPDOQuery $c) {
-		$query = trim($this->getProperty('query'));
-		if ($query) {
-			$c->where(array(
-				'name:LIKE' => "%{$query}%",
-				'OR:description:LIKE' => "%{$query}%",
-			));
-		}
-
-		return $c;
-	}
-
-
 	/**
 	 * @param xPDOObject $object
 	 *
@@ -56,8 +37,8 @@ class bbbItemGetListProcessor extends modObjectGetListProcessor {
 		// Edit
 		$array['actions'][] = array(
 			'cls' => '',
-			'icon' => 'icon icon-edit',
-			'title' => $this->modx->lexicon('bbb_item_update'),
+			'icon' => 'fa fa-edit',
+			'title' => $this->modx->lexicon('bbb_client_update'),
 			//'multiple' => $this->modx->lexicon('bbb_items_update'),
 			'action' => 'updateItem',
 			'button' => true,
@@ -67,9 +48,9 @@ class bbbItemGetListProcessor extends modObjectGetListProcessor {
 		if (!$array['active']) {
 			$array['actions'][] = array(
 				'cls' => '',
-				'icon' => 'icon icon-power-off action-green',
-				'title' => $this->modx->lexicon('bbb_item_enable'),
-				'multiple' => $this->modx->lexicon('bbb_items_enable'),
+				'icon' => 'fa fa-power-off action-green',
+				'title' => $this->modx->lexicon('bbb_client_enable'),
+				//'multiple' => $this->modx->lexicon('bbb_items_enable'),
 				'action' => 'enableItem',
 				'button' => true,
 				'menu' => true,
@@ -78,9 +59,9 @@ class bbbItemGetListProcessor extends modObjectGetListProcessor {
 		else {
 			$array['actions'][] = array(
 				'cls' => '',
-				'icon' => 'icon icon-power-off action-gray',
-				'title' => $this->modx->lexicon('bbb_item_disable'),
-				'multiple' => $this->modx->lexicon('bbb_items_disable'),
+				'icon' => 'fa fa-power-off action-gray',
+				'title' => $this->modx->lexicon('bbb_client_disable'),
+				//'multiple' => $this->modx->lexicon('bbb_items_disable'),
 				'action' => 'disableItem',
 				'button' => true,
 				'menu' => true,
@@ -90,9 +71,9 @@ class bbbItemGetListProcessor extends modObjectGetListProcessor {
 		// Remove
 		$array['actions'][] = array(
 			'cls' => '',
-			'icon' => 'icon icon-trash-o action-red',
-			'title' => $this->modx->lexicon('bbb_item_remove'),
-			'multiple' => $this->modx->lexicon('bbb_items_remove'),
+			'icon' => 'fa fa-trash-o action-red',
+			'title' => $this->modx->lexicon('bbb_client_remove'),
+			//'multiple' => $this->modx->lexicon('bbb_items_remove'),
 			'action' => 'removeItem',
 			'button' => true,
 			'menu' => true,
@@ -103,4 +84,4 @@ class bbbItemGetListProcessor extends modObjectGetListProcessor {
 
 }
 
-return 'bbbItemGetListProcessor';
+return 'ClientGetListProcessor';

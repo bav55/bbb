@@ -3,10 +3,10 @@
 /**
  * Get a list of Items
  */
-class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
-	public $objectType = 'bbbItem';
-	public $classKey = 'bbbItem';
-	public $defaultSortField = 'id';
+class MeetingGetListProcessor extends modObjectGetListProcessor {
+	public $objectType = 'Meeting';
+	public $classKey = 'Meeting';
+	public $defaultSortField = 'id_meeting';
 	public $defaultSortDirection = 'DESC';
 	//public $permission = 'list';
 
@@ -25,25 +25,6 @@ class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
 		return true;
 	}
 
-
-	/**
-	 * @param xPDOQuery $c
-	 *
-	 * @return xPDOQuery
-	 */
-	public function prepareQueryBeforeCount(xPDOQuery $c) {
-		$query = trim($this->getProperty('query'));
-		if ($query) {
-			$c->where(array(
-				'name:LIKE' => "%{$query}%",
-				'OR:description:LIKE' => "%{$query}%",
-			));
-		}
-
-		return $c;
-	}
-
-
 	/**
 	 * @param xPDOObject $object
 	 *
@@ -57,7 +38,7 @@ class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
 		$array['actions'][] = array(
 			'cls' => '',
 			'icon' => 'fa fa-edit',
-			'title' => $this->modx->lexicon('bbb_item_update'),
+			'title' => $this->modx->lexicon('bbb_meeting_update'),
 			//'multiple' => $this->modx->lexicon('bbb_items_update'),
 			'action' => 'updateItem',
 			'button' => true,
@@ -68,8 +49,8 @@ class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
 			$array['actions'][] = array(
 				'cls' => '',
 				'icon' => 'fa fa-power-off action-green',
-				'title' => $this->modx->lexicon('bbb_item_enable'),
-				'multiple' => $this->modx->lexicon('bbb_items_enable'),
+				'title' => $this->modx->lexicon('bbb_meeting_enable'),
+				//'multiple' => $this->modx->lexicon('bbb_items_enable'),
 				'action' => 'enableItem',
 				'button' => true,
 				'menu' => true,
@@ -79,8 +60,8 @@ class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
 			$array['actions'][] = array(
 				'cls' => '',
 				'icon' => 'fa fa-power-off action-gray',
-				'title' => $this->modx->lexicon('bbb_item_disable'),
-				'multiple' => $this->modx->lexicon('bbb_items_disable'),
+				'title' => $this->modx->lexicon('bbb_meeting_disable'),
+				//'multiple' => $this->modx->lexicon('bbb_items_disable'),
 				'action' => 'disableItem',
 				'button' => true,
 				'menu' => true,
@@ -91,8 +72,8 @@ class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
 		$array['actions'][] = array(
 			'cls' => '',
 			'icon' => 'fa fa-trash-o action-red',
-			'title' => $this->modx->lexicon('bbb_item_remove'),
-			'multiple' => $this->modx->lexicon('bbb_items_remove'),
+			'title' => $this->modx->lexicon('bbb_meeting_remove'),
+			//'multiple' => $this->modx->lexicon('bbb_items_remove'),
 			'action' => 'removeItem',
 			'button' => true,
 			'menu' => true,
@@ -103,4 +84,4 @@ class bbbOfficeItemGetListProcessor extends modObjectGetListProcessor {
 
 }
 
-return 'bbbOfficeItemGetListProcessor';
+return 'MeetingGetListProcessor';

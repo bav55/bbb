@@ -10,7 +10,7 @@ bbb.grid.Items = function (config) {
 		tbar: this.getTopBar(config),
 		sm: new Ext.grid.CheckboxSelectionModel(),
 		baseParams: {
-			action: 'mgr/item/getlist'
+			action: 'mgr/Meetings/getlist'
 		},
 		listeners: {
 			rowDblClick: function (grid, rowIndex, e) {
@@ -84,7 +84,7 @@ Ext.extend(bbb.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/get',
+				action: 'mgr/Meetings/get',
 				id: id
 			},
 			listeners: {
@@ -125,7 +125,7 @@ Ext.extend(bbb.grid.Items, MODx.grid.Grid, {
 				: _('bbb_item_remove_confirm'),
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/remove',
+				action: 'mgr/Meetings/remove',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -147,7 +147,7 @@ Ext.extend(bbb.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/disable',
+				action: 'mgr/Meetings/disable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -168,7 +168,7 @@ Ext.extend(bbb.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/enable',
+				action: 'mgr/Meetings/enable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
