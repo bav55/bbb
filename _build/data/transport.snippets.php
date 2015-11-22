@@ -4,9 +4,13 @@ $snippets = array();
 
 $tmp = array(
 	'bbb' => array(
-		'file' => 'bbb',
-		'description' => '',
+		'file' => 'createMeeting',
+		'description' => 'Создание мероприятия',
 	),
+    'bbb' => array(
+        'file' => 'stripslash',
+        'description' => 'Выполняет stripslashes. Применять при обработке строк, доставаемых из БД',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

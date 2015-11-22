@@ -6,16 +6,25 @@
 class bbb {
 	/* @var modX $modx */
 	public $modx;
+    /* @var Meetings $meeting */
+    public $meeting;
+    /* @var Clients $client */
+    public $client;
+    /* @var ActionTypes $actiontype */
+    public $actiontype;
+    /* @var Actions $action */
+    public $action;
 
 
-	/**
+    /**
 	 * @param modX $modx
 	 * @param array $config
-	 */
+     */
 	function __construct(modX &$modx, array $config = array()) {
 		$this->modx =& $modx;
 
 		$corePath = $this->modx->getOption('bbb_core_path', $config, $this->modx->getOption('core_path') . 'components/bbb/');
+        $assetsPath = $this->modx->getOption('bbb.assets_path', $config, $this->modx->getOption('assets_path').'components/bbb/');
 		$assetsUrl = $this->modx->getOption('bbb_assets_url', $config, $this->modx->getOption('assets_url') . 'components/bbb/');
 		$connectorUrl = $assetsUrl . 'connector.php';
 
@@ -25,7 +34,6 @@ class bbb {
 			'jsUrl' => $assetsUrl . 'js/',
 			'imagesUrl' => $assetsUrl . 'images/',
 			'connectorUrl' => $connectorUrl,
-
 			'corePath' => $corePath,
 			'modelPath' => $corePath . 'model/',
 			'chunksPath' => $corePath . 'elements/chunks/',
@@ -35,8 +43,14 @@ class bbb {
 			'processorsPath' => $corePath . 'processors/'
 		), $config);
 
-		$this->modx->addPackage('bbb', $this->config['modelPath']);
-		$this->modx->lexicon->load('bbb:default');
+                $this->modx->addPackage('bbb', $this->config['modelPath']);
+                $this->modx->lexicon->load('bbb:default');
+
+
+
 	}
 
 }
+
+
+

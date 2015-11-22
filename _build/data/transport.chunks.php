@@ -3,14 +3,10 @@
 $chunks = array();
 
 $tmp = array(
-	'tpl.bbb.Meetings' => array(
-		'file' => 'Meetings',
-		'description' => '',
-	),
-	'tpl.bbb.bbb' => array(
-		'file' => 'bbb',
-		'description' => '',
-	),
+    'tpl.form.new.meeting' => array(
+        'file' => 'form.new.meeting',
+        'description' => 'Форма создания нового вебинара',
+    ),
 );
 
 // Save chunks for setup options

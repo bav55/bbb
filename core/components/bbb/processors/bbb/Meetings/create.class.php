@@ -3,9 +3,9 @@
 /**
  * Create an Meeting
  */
-class MeetingCreateProcessor extends modObjectCreateProcessor {
-	public $objectType = 'Meeting';
-	public $classKey = 'Meeting';
+class MeetingsCreateProcessor extends modObjectCreateProcessor {
+	public $objectType = 'Meetings';
+	public $classKey = 'Meetings';
 	public $languageTopics = array('bbb');
 	//public $permission = 'create';
 
@@ -15,4 +15,4 @@ class MeetingCreateProcessor extends modObjectCreateProcessor {
 	 */
 }
 
-return 'MeetingCreateProcessor';
+return 'MeetingsCreateProcessor';
