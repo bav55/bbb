@@ -14,7 +14,8 @@ if ($object->xpdo) {
                 'Meetings',
                 'Clients',
                 'ActionTypes',
-                'Actions'
+                'Actions',
+                'MeetingStatus'
             );
             foreach ($objects as $object) {
                 $manager->createObjectContainer($object);
@@ -90,13 +91,13 @@ if ($object->xpdo) {
 
         case xPDOTransport::ACTION_UNINSTALL:
             // Remove tables if it's need
-            /*
+
             $modelPath = $modx->getOption('bbb_core_path', null, $modx->getOption('core_path') . 'components/bbb/') . 'model/';
             $modx->addPackage('bbb', $modelPath);
 
             $manager = $modx->getManager();
             $objects = array();
-            $schemaFile = MODX_CORE_PATH . 'components/bbb/model/schema/bbb.mysql.schema.xml';
+            $schemaFile = $modelPath .'schema/bbb.mysql.schema.xml';
             if (is_file($schemaFile)) {
                 $schema = new SimpleXMLElement($schemaFile, 0, true);
                 if (isset($schema->object)) {
@@ -111,7 +112,7 @@ if ($object->xpdo) {
             foreach ($objects as $tmp) {
                 $manager->removeObjectContainer($tmp);
             }
-            */
+
             break;
     }
 }

@@ -8,6 +8,7 @@ $xpdo_meta_map['Clients']= array (
   array (
     'id_client' => NULL,
     'id_modxuser' => 0,
+    'id_creator' => 0,
     'firstname' => '',
     'lastname' => '',
     'email' => '',
@@ -16,9 +17,6 @@ $xpdo_meta_map['Clients']= array (
     'mobilephone' => '',
     'gender' => 0,
     'address' => '',
-    'country' => '',
-    'city' => '',
-    'state' => '',
     'photo' => '',
     'comment' => '',
     'website' => '',
@@ -42,6 +40,14 @@ $xpdo_meta_map['Clients']= array (
       'precision' => '10',
       'phptype' => 'integer',
       'null' => true,
+      'default' => 0,
+    ),
+    'id_creator' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'null' => false,
       'default' => 0,
     ),
     'firstname' => 
@@ -102,30 +108,6 @@ $xpdo_meta_map['Clients']= array (
     'address' => 
     array (
       'dbtype' => 'text',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'country' => 
-    array (
-      'dbtype' => 'varchar',
-      'precision' => '255',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'city' => 
-    array (
-      'dbtype' => 'varchar',
-      'precision' => '255',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'state' => 
-    array (
-      'dbtype' => 'varchar',
-      'precision' => '25',
       'phptype' => 'string',
       'null' => false,
       'default' => '',
@@ -218,6 +200,17 @@ $xpdo_meta_map['Clients']= array (
       'foreign' => 'id_client',
       'cardinality' => 'many',
       'owner' => 'local',
+    ),
+  ),
+  'aggregates' => 
+  array (
+    'User' => 
+    array (
+      'class' => 'modUser',
+      'local' => 'id_creator',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
     ),
   ),
 );

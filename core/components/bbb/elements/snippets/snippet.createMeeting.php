@@ -19,7 +19,21 @@ foreach ($allFormFields as $field=>$value){
         $newMeeting-> set($field, $value);
     }
 }
+
+// создадим новый ресурс - страницу для создаваемого вебинара
+$newResource = $modx->newObject('modResource');
+$resource_settings = array(
+    'pagetitle' => $newMeeting->get('name_meeting'),
+    'alias' => $newMeeting->get('id_meeting'),
+    'parent' => $modx->getOption('bbb_root_meeting_id'),
+);
+$newResource->fromArray($resource_settings);
+if ($newResource->save() === false) {
+    $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
+    return false;
+}
 $newMeeting->set('id_creator', $modx->user->get('id'));
+$newMeeting->set('id_resource',  $newResource->get('id'));
 if ($newMeeting->save() === false) {
     $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
     return false;

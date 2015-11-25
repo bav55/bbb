@@ -19,8 +19,7 @@
         <field key="voiceBridge" dbtype="varchar" precision="20" phptype="string" null="true" default="" />
         <field key="webVoice" dbtype="varchar" precision="20" phptype="string" null="true" default="" />
         <field key="status_meeting" dbtype="int" precision="3" phptype="integer" null="false" default="0" />
-        <field key="description" dbtype="varchar" precision="255" phptype="string" null="true" default="" index="fulltext"  indexgrp="content_ft_idx"/>
-        <field key="content" dbtype="mediumtext" phptype="string" index="fulltext"   indexgrp="content_ft_idx"/>
+        <field key="id_resource" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" />
              <index alias="id_creator" name="id_creator" primary="false" unique="false" type="BTREE">
                  <column key="id_creator" length="" collation="A" null="false" />
              </index>
@@ -30,17 +29,15 @@
         <index alias="date_meeting" name="date_meeting" primary="false" unique="false">
             <column key="date_meeting"  collation="A" null="false" />
         </index>
-        <index alias="content_ft_idx" name="content_ft_idx" primary="false" unique="false" type="FULLTEXT">
-            <column key="description" length="" collation="A" null="true" />
-            <column key="content" length="" collation="A" null="true" />
-        </index>
         <composite alias="Actions" class="Actions" local="id_meeting" foreign="id_meeting" cardinality="many" owner="local" />
         <aggregate alias="User" class="modUser" local="id_creator" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Resource" class="modResource" local="id_resource" foreign="id" cardinality="one" owner="foreign" />
     </object>
 
     <object class="Clients" table="bbb_client" extends="xPDOObject">
         <field key="id_client" dbtype="int" attributes="unsigned" precision="11" phptype="integer" null="false" index="pk"  generated="native" />
         <field key="id_modxuser" dbtype="int" precision="10" phptype="integer" null="null" default="" />
+        <field key="id_creator" dbtype="int" precision="10" phptype="integer" null="false" default="" />
         <field key="firstname" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
         <field key="lastname" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
         <field key="email" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
@@ -49,9 +46,6 @@
         <field key="mobilephone" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
         <field key="gender" dbtype="int" precision="1" phptype="integer" null="false" default="0" />
         <field key="address" dbtype="text" phptype="string" null="false" default="" />
-        <field key="country" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
-        <field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
-        <field key="state" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
         <field key="photo" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         <field key="comment" dbtype="text" phptype="string" null="false" default="" />
         <field key="website" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
@@ -68,6 +62,7 @@
         </index>
 
         <composite alias="Actions" class="Actions" local="id_client" foreign="id_client" cardinality="many" owner="local" />
+        <aggregate alias="User" class="modUser" local="id_creator" foreign="id" cardinality="one" owner="foreign" />
     </object>
 
     <object class="MeetingStatus" table="bbb_meetingstatus" extends="xPDOObject">

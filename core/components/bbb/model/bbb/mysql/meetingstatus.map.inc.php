@@ -1,8 +1,8 @@
 <?php
-$xpdo_meta_map['ActionTypes']= array (
+$xpdo_meta_map['MeetingStatus']= array (
   'package' => 'bbb',
   'version' => '1.1',
-  'table' => 'bbb_actiontypes',
+  'table' => 'bbb_meetingstatus',
   'extends' => 'xPDOObject',
   'fields' => 
   array (
@@ -49,11 +49,11 @@ $xpdo_meta_map['ActionTypes']= array (
   ),
   'composites' => 
   array (
-    'Actions' => 
+    'Meetings' => 
     array (
-      'class' => 'Actions',
+      'class' => 'Meetings',
       'local' => 'id',
-      'foreign' => 'id_actiontype',
+      'foreign' => 'status_meeting',
       'cardinality' => 'many',
       'owner' => 'local',
     ),

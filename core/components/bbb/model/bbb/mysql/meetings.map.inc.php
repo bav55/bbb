@@ -16,10 +16,13 @@ $xpdo_meta_map['Meetings']= array (
     'logoutUrl' => '',
     'maxParticipants' => -1,
     'record' => 0,
+    'paid' => 0,
     'duration' => 0,
     'dialNumber' => '',
     'voiceBridge' => '',
     'webVoice' => '',
+    'status_meeting' => 0,
+    'id_resource' => NULL,
   ),
   'fieldMeta' => 
   array (
@@ -104,6 +107,15 @@ $xpdo_meta_map['Meetings']= array (
       'null' => false,
       'default' => 0,
     ),
+    'paid' => 
+    array (
+      'dbtype' => 'tinyint',
+      'precision' => '1',
+      'attributes' => 'unsigned',
+      'phptype' => 'boolean',
+      'null' => false,
+      'default' => 0,
+    ),
     'duration' => 
     array (
       'dbtype' => 'int',
@@ -135,6 +147,22 @@ $xpdo_meta_map['Meetings']= array (
       'phptype' => 'string',
       'null' => true,
       'default' => '',
+    ),
+    'status_meeting' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '3',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
+    'id_resource' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'attributes' => 'unsigned',
+      'phptype' => 'integer',
+      'null' => false,
     ),
   ),
   'indexes' => 
@@ -201,6 +229,14 @@ $xpdo_meta_map['Meetings']= array (
     array (
       'class' => 'modUser',
       'local' => 'id_creator',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
+    ),
+    'Resource' => 
+    array (
+      'class' => 'modResource',
+      'local' => 'id_resource',
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',

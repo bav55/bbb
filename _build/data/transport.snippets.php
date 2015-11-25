@@ -3,11 +3,15 @@
 $snippets = array();
 
 $tmp = array(
-	'bbb' => array(
+	'CreateMeeting' => array(
 		'file' => 'createMeeting',
 		'description' => 'Создание мероприятия',
 	),
-    'bbb' => array(
+    'CreateClient' => array(
+        'file' => 'createClient',
+        'description' => 'Создание контакта',
+    ),
+    'stripslash' => array(
         'file' => 'stripslash',
         'description' => 'Выполняет stripslashes. Применять при обработке строк, доставаемых из БД',
     ),

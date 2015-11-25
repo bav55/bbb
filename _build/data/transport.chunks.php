@@ -7,6 +7,22 @@ $tmp = array(
         'file' => 'form.new.meeting',
         'description' => 'Форма создания нового вебинара',
     ),
+    'tpl.form.new.meeting.modal' => array(
+        'file' => 'form.new.meeting.modal',
+        'description' => 'Обертка формы для создания модального окна добавлния вебинара',
+    ),
+    'tpl.form.new.client' => array(
+        'file' => 'form.new.client',
+        'description' => 'Форма создания нового контакта',
+    ),
+    'tpl.form.new.client.modal' => array(
+        'file' => 'form.new.client.modal',
+        'description' => 'Обертка формы для создания модального окна добавления контакта',
+    ),
+    'tpl.modal.form' => array(
+        'file' => 'modal.form',
+        'description' => 'Общая обертка формы для создания модального окна. Мысль хорошая, но пока не заработал, уперся в memory_limit',
+    ),
 );
 
 // Save chunks for setup options

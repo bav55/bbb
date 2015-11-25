@@ -51,7 +51,9 @@ define('BUILD_PLUGIN_STATIC', false);
 
 $BUILD_RESOLVERS = array(
 	'tables',
-	'chunks',
+    'sources',
+    'chunks',
+   // 'settings',
 	//'setup',
 	//'bbb',
 );

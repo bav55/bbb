@@ -5,7 +5,8 @@ $xpdo_meta_map = array (
   array (
     0 => 'Meetings',
     1 => 'Clients',
-    2 => 'ActionTypes',
+    2 => 'MeetingStatus',
     3 => 'Actions',
+    4 => 'ActionTypes',
   ),
 );

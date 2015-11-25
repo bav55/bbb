@@ -13,7 +13,19 @@ $tmp = array(
         'value' => 'http://web-meeting.ru/bigbluebutton/',
         'area' => ''
     ),
-
+    'root_meeting_id' => array(
+        'xtype' => 'textfield',
+        'value' => '9',
+        'area' => '',
+        'description' => 'Корневой для всех мероприятий элемент дерева ресурсов',
+    ),
+    'contact-photo-source' => array(
+        'value' => 0,
+        'xtype' => 'modx-combo-source',
+        'area' => '',
+        'description' => 'Медиа-источник для файлов фотографий контактов',
+    )
+,
     /*
 	'some_setting' => array(
 		'xtype' => 'combo-boolean',
