@@ -3,11 +3,11 @@
 $snippets = array();
 
 $tmp = array(
-	'CreateMeeting' => array(
+	'createMeeting' => array(
 		'file' => 'createMeeting',
 		'description' => 'Создание мероприятия',
 	),
-    'CreateClient' => array(
+    'createClient' => array(
         'file' => 'createClient',
         'description' => 'Создание контакта',
     ),

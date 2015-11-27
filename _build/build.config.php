@@ -37,7 +37,7 @@ define('MODX_ASSETS_URL', MODX_BASE_URL . 'assets/');
 //define('BUILD_ACTION_UPDATE', false);
 define('BUILD_SETTING_UPDATE', false);
 define('BUILD_CHUNK_UPDATE', false);
-
+define('BUILD_TEMPLATE_UPDATE', false);
 define('BUILD_SNIPPET_UPDATE', true);
 define('BUILD_PLUGIN_UPDATE', true);
 //define('BUILD_EVENT_UPDATE', true);
@@ -48,11 +48,12 @@ define('BUILD_PLUGIN_UPDATE', true);
 define('BUILD_CHUNK_STATIC', false);
 define('BUILD_SNIPPET_STATIC', false);
 define('BUILD_PLUGIN_STATIC', false);
-
+define('BUILD_TEMPLATE_STATIC', false);
 $BUILD_RESOLVERS = array(
 	'tables',
     'sources',
     'chunks',
+    'templates',
    // 'settings',
 	//'setup',
 	//'bbb',

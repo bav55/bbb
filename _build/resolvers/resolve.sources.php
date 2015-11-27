@@ -72,17 +72,18 @@
                 $source->set('properties', $default);
             }
             if($source->save()){
-                $modx->log(modX::LOG_LEVEL_ERROR, 'MediaSource is SAVED');
+                $modx->log(modX::LOG_LEVEL_INFO, 'MediaSource is SAVED');
             }
             else{
-                $modx->log(modX::LOG_LEVEL_ERROR, 'MediaSource is NOT saved');
+                $modx->log(modX::LOG_LEVEL_INFO, 'MediaSource is NOT saved');
             }
-            if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_contact-photo-source'))) {
+            if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_contact_photo_source'))) {
                 if (!$setting->get('value')) {
                     $setting->set('value', $source->get('id'));
                     $setting->save();
                 }
             }
+
             @mkdir(MODX_ASSETS_PATH . 'contact-images/');
             break;
         case xPDOTransport::ACTION_UNINSTALL:

@@ -19,13 +19,19 @@ $tmp = array(
         'area' => '',
         'description' => 'Корневой для всех мероприятий элемент дерева ресурсов',
     ),
-    'contact-photo-source' => array(
+    'contact_photo_source' => array(
         'value' => 0,
         'xtype' => 'modx-combo-source',
         'area' => '',
         'description' => 'Медиа-источник для файлов фотографий контактов',
-    )
-,
+    ),
+    'meeting_tpl_id' => array(
+        'value' => '',
+        'xtype' => 'modx-combo-template',
+        'area' => '',
+        'description' => 'Шаблон по умолчанию для страницы вебинара',
+    ),
+
     /*
 	'some_setting' => array(
 		'xtype' => 'combo-boolean',

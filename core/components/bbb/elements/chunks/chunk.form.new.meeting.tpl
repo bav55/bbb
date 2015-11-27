@@ -52,8 +52,18 @@
         <div class="col-xs-offset-5 col-xs-7">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="record" name="record" value="[[+record:ne:then=`1`:else=`0`"/>
+                    <input type="checkbox" id="record" name="record" value="1"/>
                     <span>Записывать мероприятие</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-offset-5 col-xs-7">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="paid" name="paid" value="1"/>
+                    <span>Платное мероприятие</span>
                 </label>
             </div>
         </div>

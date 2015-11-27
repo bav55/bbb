@@ -21,24 +21,24 @@ foreach ($allFormFields as $field=>$value){
 }
 
 // загрузим фото клиента и путь к фотографии добавим в параметры объекта
-$sourceId = $modx -> getOption('contact-photo-source');
-$source = $modx -> getObject('modMediaSource',$sourceId);
-$uploaddir = $source -> getBasePath($source);
-$uploadfile = $uploaddir.basename($_FILES['photo']['name']);
-// Копируем файл из каталога для временного хранения файлов:
-if (!copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
-{
-    $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
-    return false;
+if(isset($_FILES['photo'])){
+    $sourceId = $modx -> getOption('bbb_contact_photo_source');
+    $source = $modx -> getObject('modMediaSource',$sourceId);
+    $source_arr = $source->toArray();
+    $uploaddir = $source_arr['properties']['basePath']['value'];
+    //сгенерируем уникальное имя файла для загруженной фотографии
+
+     $ext = substr(strrchr($_FILES['photo']['name'], '.'), 1);
+     $uploadfile = base_convert(time(), 10, 36).'-'.base_convert(rand(0,2000000000), 10, 36);
+     $uploadfile .= '.'.$ext;
+    if (copy($_FILES['photo']['tmp_name'], $uploaddir.$uploadfile)){
+        $newClient->set('photo', $uploadfile);
+    }
 }
-
-$newClient->set('photo', $_FILES['photo']['name']);
 $newClient->set('id_creator', $modx->user->get('id'));
-
 if ($newClient->save() === false) {
     $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
     return false;
 }
-//print_r($newClient->toArray());
 return true;
 ?>

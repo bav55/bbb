@@ -33,7 +33,7 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="birthdate" class="col-xs-5 control-label"><span>Дата рождения:</span></label>
         <div class="col-xs-7">
-            <input type="datetime-local" class="form-control" id="birthdate" name="birthdate" value="[[+birthdate]]" >
+            <input type="date" class="form-control" id="birthdate" name="birthdate" value="[[+birthdate]]" >
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -64,20 +64,21 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="photo" class="col-xs-5 control-label"><span>Фото:</span></label>
         <div class="col-xs-7">
-            <input type="file" name="photo" id="photo"/>
+            <input type="file" class="form-control" name="photo" id="photo"/>
         </div>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="website" class="col-xs-5 control-label"><span>Веб-сайт:</span></label>
-        <div class="col-xs-7">
-            <input type="text" class="form-control" id="website" name="website" value="[[+website]]" placeholder="" />
-        </div>
-    </div>
-       <!--
-            <div class="form-group col-xs-12 col-sm-12 col-md-12">
-                <div class="col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 ">
-                        <input  type="submit" class="form-control button btn-primary" name="submit" value="Создать новый контакт"/>
-                </div>
-            </div>
-    -->
+    <!--
+<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+ <label for="website" class="col-xs-5 control-label"><span>Веб-сайт:</span></label>
+ <div class="col-xs-7">
+     <input type="text" class="form-control" id="website" name="website" value="[[+website]]" placeholder="" />
+ </div>
+</div>
+
+     <div class="form-group col-xs-12 col-sm-12 col-md-12">
+         <div class="col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 ">
+                 <input  type="submit" class="form-control button btn-primary" name="submit" value="Создать новый контакт"/>
+         </div>
+     </div>
+-->
 </form>

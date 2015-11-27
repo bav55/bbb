@@ -20,6 +20,7 @@ if ($object->xpdo) {
             foreach ($objects as $object) {
                 $manager->createObjectContainer($object);
             }
+            //здесь надо добавить необходимые записи в справочники!
         break;
         case xPDOTransport::ACTION_UPGRADE:
             $modelPath = $modx->getOption('bbb_core_path', null, $modx->getOption('core_path') . 'components/bbb/') . 'model/';
