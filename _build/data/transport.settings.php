@@ -25,6 +25,12 @@ $tmp = array(
         'area' => '',
         'description' => 'Медиа-источник для файлов фотографий контактов',
     ),
+    'meeting_photo_source' => array(
+        'value' => 0,
+        'xtype' => 'modx-combo-source',
+        'area' => '',
+        'description' => 'Медиа-источник для файлов фотографий мероприятий',
+    ),
     'meeting_tpl_id' => array(
         'value' => '',
         'xtype' => 'modx-combo-template',

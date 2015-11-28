@@ -58,20 +58,20 @@
                 )
             ,'is_stream' => 1
             );
-            /* @var $source modMediaSource */
-            if (!$source = $modx->getObject('modMediaSource', array('name' => $properties['name']))) {
-                $source = $modx->newObject('modMediaSource', $properties);
+            /* @var $sourceContact modMediaSource */
+            if (!$sourceContact = $modx->getObject('modMediaSource', array('name' => $properties['name']))) {
+                $sourceContact = $modx->newObject('modMediaSource', $properties);
             }
             else {
-                $default = $source->get('properties');
+                $default = $sourceContact->get('properties');
                 foreach ($properties['properties'] as $k => $v) {
                     if (!array_key_exists($k, $default)) {
                         $default[$k] = $v;
                     }
                 }
-                $source->set('properties', $default);
+                $sourceContact->set('properties', $default);
             }
-            if($source->save()){
+            if($sourceContact->save()){
                 $modx->log(modX::LOG_LEVEL_INFO, 'MediaSource is SAVED');
             }
             else{
@@ -79,12 +79,44 @@
             }
             if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_contact_photo_source'))) {
                 if (!$setting->get('value')) {
-                    $setting->set('value', $source->get('id'));
+                    $setting->set('value', $sourceContact->get('id'));
                     $setting->save();
                 }
             }
-
+            $properties2 = $properties;
+            $properties2['properties']['basePath']['value'] =  $assets . '/meeting-images/';
+            $properties2['properties']['baseUrl']['value'] =  'assets/meeting-images/';
+            $properties2['name'] =   'bbb meeting Images';
+            $properties2['description'] =  'Путь для сохранения фотографий мероприятий';
+            // ---
+        /* @var $sourceContact modMediaSource */
+        if (!$sourceMeeting= $modx->getObject('modMediaSource', array('name' => $properties2['name']))) {
+            $sourceMeeting = $modx->newObject('modMediaSource', $properties2);
+        }
+        else {
+            $default = $sourceMeeting->get('properties');
+            foreach ($properties2['properties'] as $k => $v) {
+                if (!array_key_exists($k, $default)) {
+                    $default[$k] = $v;
+                }
+            }
+            $sourceMeeting->set('properties', $default);
+        }
+        if($sourceMeeting->save()){
+            $modx->log(modX::LOG_LEVEL_INFO, 'MediaSource2 is SAVED');
+        }
+        else{
+            $modx->log(modX::LOG_LEVEL_INFO, 'MediaSource2 is NOT saved');
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_meeting_photo_source'))) {
+            if (!$setting->get('value')) {
+                $setting->set('value', $sourceMeeting->get('id'));
+                $setting->save();
+            }
+        }
+            // ---
             @mkdir(MODX_ASSETS_PATH . 'contact-images/');
+            @mkdir(MODX_ASSETS_PATH . 'meeting-images/');
             break;
         case xPDOTransport::ACTION_UNINSTALL:
             break;

@@ -5,11 +5,11 @@ $chunks = array();
 $tmp = array(
     'tpl.form.new.meeting' => array(
         'file' => 'form.new.meeting',
-        'description' => 'Форма создания нового вебинара',
+        'description' => 'Форма создания нового мероприятия',
     ),
     'tpl.form.new.meeting.modal' => array(
         'file' => 'form.new.meeting.modal',
-        'description' => 'Обертка формы для создания модального окна добавлния вебинара',
+        'description' => 'Обертка формы для создания модального окна добавлния мероприятия',
     ),
     'tpl.form.new.client' => array(
         'file' => 'form.new.client',
@@ -18,6 +18,14 @@ $tmp = array(
     'tpl.form.new.client.modal' => array(
         'file' => 'form.new.client.modal',
         'description' => 'Обертка формы для создания модального окна добавления контакта',
+    ),
+    'tpl.form.request' => array(
+        'file' => 'form.request',
+        'description' => 'Форма подачи заявки на мероприятие',
+    ),
+    'tpl.meeting.info' => array(
+        'file' => 'meeting.info',
+        'description' => 'Информация о мероприятии на его странице',
     ),
     'tpl.modal.form' => array(
         'file' => 'modal.form',
