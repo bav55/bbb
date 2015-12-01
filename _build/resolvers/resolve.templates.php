@@ -22,7 +22,6 @@
                         'description' => 'Картинка, отображаемая на странице мероприятия',
                         'template' => $meeting_template_id
                     );
-                    //if($modx->runProcessor('element/tv/create', $tv_options)){
                     $new_tv = $modx->NewObject('modTemplateVar',$tv_options);
                     if ($new_tv && $new_tv -> save()){
                         $modx->log(modX::LOG_LEVEL_INFO, 'TV is created');

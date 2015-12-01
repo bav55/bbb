@@ -14,6 +14,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'published' => 1,
                 'hidemenu' => 1,
                 'show_in_tree' => 1,
+                'alias' => 'meetings',
             ),
             'waitpage' => array(
                 'pagetitle' => 'Страница входа на мероприятие',
@@ -22,22 +23,25 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'published' => 1,
                 'hidemenu' => 1,
                 'show_in_tree' => 1,
+                'alias' => 'entry-to-the-meeting',
             ),
         );
         foreach ($tmp as $k => $v) {
             /* @var modResource $resource */
+            $path = $modx->getOption('bbb_core_path',null,$modx->getOption('core_path').'components/bbb/');
             if(!$res = $modx->getObject('modResource',array('pagetitle' => @$v['pagetitle']))){
                 $resource = $modx->newObject('modResource');
                 $resource->fromArray(array(
                     'pagetitle' => @$v['pagetitle'],
                     'description' => @$v['description'],
-                    'content' => file_get_contents($sources['source_core'].'/elements/resources/resource.'.$k.'.tpl'),
+                    'content' => file_get_contents($path.'elements/resources/resource.'.$k.'.tpl'),
                     'isfolder' => @$v['isfolder'],
                     'published' => @$v['published'],
                     'hidemenu' => @$v['hidemenu'],
                     'show_in_tree' => @$v['show_in_tree'],
+                    'alias' => @$v['alias'],
                 ),'',true,true);
-                $resource->set('alias',$resource->cleanAlias($resource->get('pagetitle')));
+                if(!isset($v['alias'])) $resource->set('alias',$resource->cleanAlias($resource->get('pagetitle')));
                 $resource->save();
             }
         }
