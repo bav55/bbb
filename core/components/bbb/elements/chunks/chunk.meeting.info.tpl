@@ -11,8 +11,19 @@
             <p><b>[[+date_meeting:strtotime:date=`%d.%m.%Y, %H:%M`]]<br/> <small>(время Московское)</small></b></p>
             [[!+modx.user.id:is=`[[+id_creator]]`:then=`
             <p>
-                <a href="#EditMeetingModal"  class="btn btn-primary" data-toggle="modal" data-target="#EditMeetingModal">Обновить описание мероприятия</i></a>
-            </p>`:else=``]]
+                <a href="#EditMeetingModal"  class="form-control btn btn-primary" data-toggle="modal" data-target="#EditMeetingModal">Обновить описание мероприятия</i></a>
+            </p>
+                        <form name="startMeeting" method="post" action="[[~[[*id]]]]">
+                <input type="hidden" name="id_meeting" value="[[+id_meeting]]">
+                <input type="hidden" name="id_creator" value="[[+id_creator]]">
+                <input style="display:none;" type="text" name="email_" value="" />
+                <input type="submit" name="startMeeting-submit" class="form-control btn btn-large btn-danger " value="Начать мероприятие">
+            </form>
+            [[FormIt?
+            &hooks=`spam,startMeeting`
+            &submitVar=`startMeeting-submit`
+            ]]
+            `:else=``]]
         </div>
     </aside>
     <article class="col-xs-12 col-sm-5 col-lg-5">
