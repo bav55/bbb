@@ -29,7 +29,7 @@
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12">
         <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 ">
-            <input  type="submit" class="form-control button btn-primary btn-md" name="submit" value="Отправить заявку"/>
+            <input  type="submit" class="form-control button btn-primary btn-md" name="receivedRequest-submit" value="Отправить заявку"/>
         </div>
     </div>
 </form>

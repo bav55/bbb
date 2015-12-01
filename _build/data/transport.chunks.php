@@ -9,7 +9,7 @@ $tmp = array(
     ),
     'tpl.form.new.meeting.modal' => array(
         'file' => 'form.new.meeting.modal',
-        'description' => 'Обертка формы для создания модального окна добавлния мероприятия',
+        'description' => 'Обертка формы для создания модального окна добавления мероприятия',
     ),
     'tpl.form.new.client' => array(
         'file' => 'form.new.client',
@@ -27,10 +27,27 @@ $tmp = array(
         'file' => 'meeting.info',
         'description' => 'Информация о мероприятии на его странице',
     ),
+    'tpl.meeting.edit.content' => array(
+        'file' => 'meeting.edit.content',
+        'description' => 'Редактирование контента о мероприятии',
+    ),
+    'tpl.form.edit.meeting.modal' => array(
+        'file' => 'form.edit.meeting.modal',
+        'description' => 'Обертка формы для создания модального окна редактирования данных о мероприятии',
+    ),
     'tpl.modal.form' => array(
         'file' => 'modal.form',
         'description' => 'Общая обертка формы для создания модального окна. Мысль хорошая, но пока не заработал, уперся в memory_limit',
     ),
+    'actions.item.tpl' => array(
+        'file' => 'actions.item',
+        'description' => 'строка вывода Действия (в списке)',
+    ),
+    'meeting.item.tpl' => array(
+        'file' => 'meeting.item',
+        'description' => 'строка вывода мероприятия (в списке)',
+    ),
+
 );
 
 // Save chunks for setup options

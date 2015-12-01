@@ -1,5 +1,6 @@
 <form class="form-horizontal" id="NewMeetingForm" method="post" action="">
     <input style="display:none;" type="text" name="email_" value="" />
+    <input type="hidden" name="id_meeting" value="[[+id_meeting]]">
     <div class="form-group col-xs-12 col-sm 12">
         <label for="name_meeting" class="col-xs-3 col-sm-3 control-label"><span>Название мероприятия:</span></label>
         <div class="col-xs-9 col-sm-9">
@@ -9,7 +10,7 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="date_meeting" class="col-xs-5 control-label"><span>Дата и время начала:</span></label>
         <div class="col-xs-7">
-            <input type="datetime-local" class="form-control" id="date_meeting" name="date_meeting" value="[[+date_meeting]]" required>
+            <input type="datetime-local" class="form-control" id="date_meeting" name="date_meeting" value="[[+date_meeting:strtotime:date=`%Y-%m-%dT%H:%M`]]" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -52,7 +53,7 @@
         <div class="col-xs-offset-5 col-xs-7">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="record" name="record" value="1"/>
+                    <input type="checkbox" id="record" name="record" value="1" [[+record:is=`1`:then=`checked`]]/>
                     <span>Записывать мероприятие</span>
                 </label>
             </div>
@@ -62,7 +63,7 @@
         <div class="col-xs-offset-5 col-xs-7">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="paid" name="paid" value="1"/>
+                    <input type="checkbox" id="paid" name="paid" value="1" [[+paid:is=`1`:then=`checked`]]/>
                     <span>Платное мероприятие</span>
                 </label>
             </div>

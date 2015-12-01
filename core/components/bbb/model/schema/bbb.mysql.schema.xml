@@ -82,7 +82,7 @@
         <field key="id_actiontype" dbtype="int" attributes="unsigned" precision="11" phptype="integer" null="false"  />
         <field key="id_client" dbtype="int"  attributes="unsigned" precision="11" phptype="integer" null="false"  />
         <field key="id_meeting" dbtype="int" attributes="unsigned" precision="11" phptype="integer" null="false"  />
-        <field key="timestamp_action" dbtype="timestamp" phptype="timestamp" null="false" attributes="ON UPDATE CURRENT_TIMESTAMP"  />
+        <field key="timestamp_action" dbtype="timestamp" phptype="timestamp" null="false" attributes="DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"  />
         <field key="extended" dbtype="text" phptype="json" null="true" index="fulltext" indexgrp="extended" />
 
         <index alias="primary" name="primary" primary="true" unique="true">

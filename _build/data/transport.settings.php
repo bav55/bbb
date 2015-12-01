@@ -15,9 +15,15 @@ $tmp = array(
     ),
     'root_meeting_id' => array(
         'xtype' => 'textfield',
-        'value' => '9',
+        'value' => '',
         'area' => '',
         'description' => 'Корневой для всех мероприятий элемент дерева ресурсов',
+    ),
+    'id_waitpage' => array(
+        'xtype' => 'textfield',
+        'value' => '',
+        'area' => '',
+        'description' => 'modResource.id страницы входа на мероприятие (ожидание входа, пока не начнется мероприятие)',
     ),
     'contact_photo_source' => array(
         'value' => 0,

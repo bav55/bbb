@@ -1,26 +1,107 @@
-<h3>[[*name_meeting]]</h3>
+<h3>[[+name_meeting]]</h3>
 <div class="row">
     <aside class="col-xs-12 col-sm-3 col-lg-3">
         <a href="#">
-          <!--  <img src="holder.js/250x250" class="img-responsive thumbnail" alt=""> -->
-             <img src="[[+tv.image_meeting]]" class="img-responsive thumbnail center-block" alt="">
+            <!--  <img src="holder.js/250x250" class="img-responsive thumbnail" alt=""> -->
+            <img src="[[+tv.image_meeting]]" class="img-responsive thumbnail center-block" alt="">
         </a>
         <div class="caption text-center">
             <h5>Ведущий: <b>[[+fullname]]</b></h5>
             <p>Дата и время мероприятия: </p>
             <p><b>[[+date_meeting:strtotime:date=`%d.%m.%Y, %H:%M`]]<br/> <small>(время Московское)</small></b></p>
+            [[!+modx.user.id:is=`[[+id_creator]]`:then=`
+            <p>
+                <a href="#EditMeetingModal"  class="btn btn-primary" data-toggle="modal" data-target="#EditMeetingModal">Обновить описание мероприятия</i></a>
+            </p>`:else=``]]
         </div>
     </aside>
     <article class="col-xs-12 col-sm-5 col-lg-5">
         [[*content]]
     </article>
     <aside class="col-xs-12 col-sm-4 col-lg-4">
-        [[$tpl.form.request?id_meeting=[[+id_meeting]]&id_creator=[[+id_creator]]]]
+     [[$tpl.form.request?]]
+        [[!FormIt?
+        &hooks=`spam,receivedRequest,email,redirect`
+        &emailTo=`bav55@yandex.ru`
+        &emailSubject=`Поступила новая заявка на участие`
+        &emailTpl=`tpl.request.email`
+        &submitVar=`receivedRequest-submit`
+        &redirectTo=`[[*id]]`
+        ]]
     </aside>
 </div>
 [[!+modx.user.id:is=`[[+id_creator]]`:then=`
 <div class="row">
+    <hr/>
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        Служебная информация
+        <form name="actions_meeting" method="post" action="[[~[[*id]]]]">
+            <input type="hidden" name="clients[]" value="" />
+            <input style="display:none;" type="text" name="email_" value="" />
+        <table class="table table-hover table-striped">
+            <caption>
+                <h4>Действия по данному мероприятию</h4>
+            </caption>
+
+            <thead>
+                    <th class="col-xs-3">Дата и время действия</th>
+                    <th class="col-xs-3">Контакт</th>
+                    <th class="col-xs-5">Действие</th>
+                    <th class="col-xs-1">Отметить</th>
+            </thead>
+            <tbody>
+            [[!pdoResources?
+            &tpl=`actions.item.tpl`
+            &loadModels=`bbb`
+            &class=`Actions`
+            &leftJoin=`{
+                     "Client":{
+                         "class": "Clients",
+                            "on": "Actions.id_client = Client.id_client"
+                      },
+                     "Actiontype":{
+                         "class": "ActionTypes",
+                         "on": "Actions.id_actiontype = Actiontype.id"
+                     }
+            }`
+            &select=`{
+                "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
+            }`
+            &where=`["id_meeting = [[+id_meeting]]"]`
+
+            &sortby=`timestamp_action`
+            &sortdir=`DESC`
+            &showLog=`0`
+            ]]
+
+
+            </tbody>
+        </table>
+         <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+            <input type="submit" class=" form-control button btn-primary btn-md" name="actions_meeting-submit" value="Отправить приглашения выбранным контактам">
+          </div>
+        </form>
     </div>
-</div>`:else=``]]
+</div>
+[[!FormIt?
+&hooks=`sentInvitation`
+&submitVar=`actions_meeting-submit`
+]]
+<div class="row" style="background-color: #FFFFCC; height: 400px; margin-top: 20px;">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
+        [[!$tpl.meeting.edit.content?]]
+
+        [[!FormIt?
+        &hooks=`spam,editContentMeeting,redirect`
+        &submitVar=`editContent-submit`
+        &redirectTo=`[[*id]]`
+        ]]
+    </div>
+</div>
+ [[!$tpl.form.edit.meeting.modal?id_meeting=[[+id_meeting]]]]
+[[!FormIt?
+&hooks=`spam,editMeeting,redirect`
+&submitVar=`editMeeting-submit`
+&redirectTo=`[[*id]]`
+]]
+
+`:else=``]]

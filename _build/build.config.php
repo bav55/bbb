@@ -49,11 +49,13 @@ define('BUILD_CHUNK_STATIC', false);
 define('BUILD_SNIPPET_STATIC', false);
 define('BUILD_PLUGIN_STATIC', false);
 define('BUILD_TEMPLATE_STATIC', false);
+define('BUILD_RESOURCE_STATIC', false);
 $BUILD_RESOLVERS = array(
 	'tables',
     'sources',
     'chunks',
     'templates',
+    'resources',
    // 'settings',
 	//'setup',
 	//'bbb',

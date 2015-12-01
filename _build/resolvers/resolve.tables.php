@@ -20,7 +20,24 @@ if ($object->xpdo) {
             foreach ($objects as $object) {
                 $manager->createObjectContainer($object);
             }
+            $actiontypes = array(
+                'MEETING_IS_CREATED',     //мероприятие запланировано (создано)
+                'RECEIVED_REQUEST',         //получена заявка на участие в мероприятии
+                'SENT_INVITATION',           //отправлено приглашение
+                'MEETING_STARTED',        //мероприятие началось
+                'MEETING_ENDED',           //Мероприятие окончилось
+                'PAYMENT_RECEIVED',     //Поступил платеж
+                'USER_INVOLVED_MEETING',    //Пользователь вошел на мероприятие
+                'USER_LEFT_MEETING',            //Пользователь покинул мероприятие
+                'USER_SENT_REVIEW'              //Пользователь оставил отзыв
+            );
             //здесь надо добавить необходимые записи в справочники!
+            foreach($actiontypes  as $field=>$value){
+                    if(!$modx->getObject('ActionTypes', array('name'=>$value))){
+                            $actiontype = $modx->newObject('ActionTypes',array('name'=>$value));
+                            $actiontype->save();
+                    }
+            }
         break;
         case xPDOTransport::ACTION_UPGRADE:
             $modelPath = $modx->getOption('bbb_core_path', null, $modx->getOption('core_path') . 'components/bbb/') . 'model/';

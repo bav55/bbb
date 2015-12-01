@@ -15,7 +15,38 @@ $tmp = array(
         'file' => 'stripslash',
         'description' => 'Выполняет stripslashes. Применять при обработке строк, доставаемых из БД',
     ),
-
+    'editMeeting' => array(
+        'file' => 'editMeeting',
+        'description' => 'Редактирование данных о мероприятии',
+    ),
+    'editContentMeeting' => array(
+        'file' => 'editContentMeeting',
+        'description' => 'Редактирование описания мероприятия (связанный ресурс)',
+    ),
+    'receivedRequest' => array(
+        'file' => 'sendRequest',
+        'description' => 'Обработка заявки на участие в мероприятии',
+    ),
+    'clearCacheResource' => array(
+        'file' => 'clearCacheResource',
+        'description' => 'Очищает кэш ресурса после обновления, не затрагивая кэш всего сайта',
+    ),
+    'sentInvitation' => array(
+        'file' => 'sentInvitation',
+        'description' => 'Отправляет приглашение контактам',
+    ),
+    'startMeeting' => array(
+        'file' => 'startMeeting',
+        'description' => 'Создает мероприятие на сервере BigBlueButton и возвращает ссылку на вход для ведущего',
+    ),
+    'getJoinMeetingUrl' => array(
+        'file' => 'getJoinMeetingUrl',
+        'description' => 'Возвращает ссылку на вход в мероприятие для со-ведущего или участника (см. параметры сниппета)',
+    ),
+    'endMeeting' => array(
+        'file' => 'endMeeting',
+        'description' => 'Завершает мероприятие в откидывает всех активных пользователей',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

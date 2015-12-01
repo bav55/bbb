@@ -24,7 +24,7 @@
         &select=`{
         "Meetings": "*",
         "modResource": "id",
-        "Profile": "fullname,email as email_creator, email"
+        "Profile": "fullname,email as email_creator"
         }`
         &includeTVs=`image_meeting`
         &where=`["modResource.id = [[*id]]"]`
