@@ -43,6 +43,12 @@ $tmp = array(
         'area' => '',
         'description' => 'Шаблон по умолчанию для страницы вебинара',
     ),
+    'sentInvitation_page_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы для отправки приглашений на мероприятие',
+    ),
 
     /*
 	'some_setting' => array(

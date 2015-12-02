@@ -45,9 +45,6 @@
 <div class="row">
     <hr/>
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <form name="actions_meeting" method="post" action="[[~[[*id]]]]">
-            <input type="hidden" name="clients[]" value="" />
-            <input style="display:none;" type="text" name="email_" value="" />
         <table class="table table-hover table-striped">
             <caption>
                 <h4>Действия по данному мероприятию</h4>
@@ -57,7 +54,6 @@
                     <th class="col-xs-3">Дата и время действия</th>
                     <th class="col-xs-3">Контакт</th>
                     <th class="col-xs-5">Действие</th>
-                    <th class="col-xs-1">Отметить</th>
             </thead>
             <tbody>
             [[!pdoResources?
@@ -87,10 +83,9 @@
 
             </tbody>
         </table>
-         <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-            <input type="submit" class=" form-control button btn-primary btn-md" name="actions_meeting-submit" value="Отправить приглашения выбранным контактам">
-          </div>
-        </form>
+        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+            <a href="[[~[[++bbb_sentInvitation_page_id]]]]?&id_meeting=[[+id_meeting]]&redirect=[[+id_resource]]" class="form-control btn btn-primary">Отправить приглашение на это мероприятие</a>
+         </div>
     </div>
 </div>
 [[!FormIt?

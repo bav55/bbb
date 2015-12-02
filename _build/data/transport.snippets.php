@@ -47,6 +47,11 @@ $tmp = array(
         'file' => 'endMeeting',
         'description' => 'Завершает мероприятие в откидывает всех активных пользователей',
     ),
+    'getUrlParam' => array(
+        'file' => 'getUrlParam',
+        'description' => 'Сниппет позволяет получить значения параметров из GET-массива',
+    ),
+
 );
 
 foreach ($tmp as $k => $v) {

@@ -2,15 +2,15 @@
 
 $plugins = array();
 
-$tmp = array(/*
+$tmp = array(
 	'bbb' => array(
 		'file' => 'bbb',
-		'description' => '',
+		'description' => 'Плагин, срабатывающий при регистрации нового ведущего вебинара',
 		'events' => array(
-			'OnManagerPageInit' => array()
+			'OnUserSave',
+            'OnLoadWebDocument'
 		)
 	)
-	*/
 );
 
 foreach ($tmp as $k => $v) {

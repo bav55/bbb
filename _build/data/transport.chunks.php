@@ -47,7 +47,22 @@ $tmp = array(
         'file' => 'meeting.item',
         'description' => 'строка вывода мероприятия (в списке)',
     ),
-
+    'client.check.item.tpl' => array(
+        'file' => 'client.check.item',
+        'description' => 'Оформление контакта в форме отправки приглашений или сообщений (с чекбоксом)',
+    ),
+    'tpl.form.sent.invitation.tpl' => array(
+        'file' => 'form.sent.invitation',
+        'description' => 'Форма отправки приглашений на мероприятие',
+    ),
+    'invitation.template.tpl' => array(
+        'file' => 'invitation.template',
+        'description' => 'Содержание письма-приглашения на мероприятие (по умолчанию)',
+    ),
+    'message.template.tpl' => array(
+        'file' => 'message.template',
+        'description' => 'Содержание письма рассылки контакту (по умолчанию)',
+    ),
 );
 
 // Save chunks for setup options

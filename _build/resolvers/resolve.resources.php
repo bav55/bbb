@@ -25,6 +25,15 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'show_in_tree' => 1,
                 'alias' => 'entry-to-the-meeting',
             ),
+            'sentInvitationPage' => array(
+                'pagetitle' => 'Отправка приглашений на мероприятие',
+                'description' => 'Страница с формой отправки приглашений на мероприятие',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 1,
+                'show_in_tree' => 1,
+                'alias' => 'sent-invitation',
+            ),
         );
         foreach ($tmp as $k => $v) {
             /* @var modResource $resource */
@@ -57,6 +66,13 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_root_meeting_id'))) {
             if (!$setting->get('value')) {
                 $resource = $modx->getObject('modResource',array('pagetitle' => 'Мероприятия'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+            }
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_sentInvitation_page_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Отправка приглашений на мероприятие'));
                 $setting->set('value', $resource->get('id'));
                 $setting->save();
             }
