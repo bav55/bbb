@@ -31,13 +31,13 @@ foreach ($tmp as $k => $v) {
 		foreach ($v['events'] as $k2 => $v2) {
 			/* @var modPluginEvent $event */
 			$event = $modx->newObject('modPluginEvent');
-			$event->fromArray(array_merge(
+			$event->fromArray(
 				array(
-					'event' => $k2,
+					'event' => $v2,
 					'priority' => 0,
 					'propertyset' => 0,
-				), $v2
-			), '', true, true);
+				),
+			 '', true, true);
 			$events[] = $event;
 		}
 		unset($v['events']);
@@ -49,6 +49,5 @@ foreach ($tmp as $k => $v) {
 
 	$plugins[] = $plugin;
 }
-
 unset($tmp, $properties);
 return $plugins;

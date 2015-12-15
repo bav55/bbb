@@ -43,6 +43,14 @@
 
                 }
             }
+            if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_template_waitpage'))) {
+                if (!$setting->get('value')) {
+                    $waitpage_template = $modx->getObject('modTemplate',array('templatename' => 'waitpage.tpl'));
+                    $waitpage_template_id =  $waitpage_template->id;
+                    $setting->set('value',$waitpage_template_id);
+                    $setting->save();
+                }
+            }
             break;
 
         case xPDOTransport::ACTION_UPGRADE:

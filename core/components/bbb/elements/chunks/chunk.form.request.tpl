@@ -1,3 +1,4 @@
+[[!+fi.successMessage]]
 <form class="form-horizontal" id="NewRequestForm" method="post" action="">
     <legend>Подать заявку на участие</legend>
     <input style="display:none;" type="text" name="email_" value="" />

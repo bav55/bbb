@@ -1,6 +1,7 @@
 <?php
 // actiontype = RECEIVED_REQUEST
 //
+//$modx->log(xPDO::LOG_LEVEL_ERROR,'message from receivedRequest!');
 $allFormFields = $hook->getValues();
 if($allFormFields['email_']!=''){ return false;}        //spam-проверка
 $actiontype = $modx->getObject('ActionTypes',array('name'=>'RECEIVED_REQUEST'));

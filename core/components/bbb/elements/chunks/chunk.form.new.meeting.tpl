@@ -4,7 +4,7 @@
     <div class="form-group col-xs-12 col-sm 12">
         <label for="name_meeting" class="col-xs-3 col-sm-3 control-label"><span>Название мероприятия:</span></label>
         <div class="col-xs-9 col-sm-9">
-            <input type="text" class="form-control" id="name_meeting" name="name_meeting" value="[[+name_meeting]]" placeholder="Укажите название мероприятия" required>
+            <input type="text" class="form-control" id="name_meeting" name="name_meeting" value="[[+name_meeting:htmlent]]" placeholder="Укажите название мероприятия" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -34,13 +34,13 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="moderatorPw" class="col-xs-5 control-label"><span>Пароль ведущего:</span></label>
         <div class="col-xs-7">
-            <input type="text" class="form-control" id="moderatorPw" name="moderatorPw"  value="[[+moderatorPw]]"  placeholder="" />
+            <input type="text" class="form-control" id="moderatorPw" name="moderatorPw"  value="[[+moderatorPw]]"  placeholder=""  required/>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="attendeePw" class="col-xs-5 control-label"><span>Пароль участника:</span></label>
         <div class="col-xs-7">
-            <input type="text" class="form-control" id="attendeePw" name="attendeePw"  value="[[+attendeePw]]" placeholder="" />
+            <input type="text" class="form-control" id="attendeePw" name="attendeePw"  value="[[+attendeePw]]" placeholder=""  required/>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">

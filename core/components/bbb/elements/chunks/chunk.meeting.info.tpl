@@ -19,7 +19,7 @@
                 <input style="display:none;" type="text" name="email_" value="" />
                 <input type="submit" name="startMeeting-submit" class="form-control btn btn-large btn-danger " value="Начать мероприятие">
             </form>
-            [[FormIt?
+            [[!FormIt?
             &hooks=`spam,startMeeting`
             &submitVar=`startMeeting-submit`
             ]]
@@ -32,12 +32,15 @@
     <aside class="col-xs-12 col-sm-4 col-lg-4">
      [[$tpl.form.request?]]
         [[!FormIt?
-        &hooks=`spam,receivedRequest,email,redirect`
+        &hooks=`spam,receivedRequest,email`
         &emailTo=`bav55@yandex.ru`
         &emailSubject=`Поступила новая заявка на участие`
         &emailTpl=`tpl.request.email`
         &submitVar=`receivedRequest-submit`
-        &redirectTo=`[[*id]]`
+        &successMessage=`<div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p>Ваша заявка успешно отправлена!</p>
+        </div>`
         ]]
     </aside>
 </div>
@@ -74,10 +77,9 @@
                 "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
             }`
             &where=`["id_meeting = [[+id_meeting]]"]`
-
             &sortby=`timestamp_action`
             &sortdir=`DESC`
-            &showLog=`0`
+            &showLog=`1`
             ]]
 
 

@@ -58,7 +58,7 @@
         <index alias="lastname" name="lastname" primary="false" unique="false" type="BTREE">
             <column key="lastname" collation="A" null="false" />
         </index>
-        <index alias="email" name="email" primary="false" unique="true" type="BTREE">
+        <index alias="email" name="email" primary="false" unique="false" type="BTREE">
             <column key="email" collation="A" null="false" />
         </index>
 

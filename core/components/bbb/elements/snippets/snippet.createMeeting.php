@@ -1,9 +1,9 @@
 <?php
 /*
- * Данный сниппет addNewMeeting будет использоваться как hook для FormIt - создавать новое мероприятие после заполнения формы
+ * Данный сниппет createMeeting будет использоваться как hook для FormIt - создавать новое мероприятие после заполнения формы
  */
 if(!$bbb = $modx->getService('bbb','bbb',$modx->getOption('bbb_core_path',null,$modx->getOption('core_path').'components/bbb/').'model/bbb/')){
-    $modx->log(xPDO::LOG_LEVEL_ERROR,'Ошибка! Не удается проинициализировать bbb.','','createNewMeeting',__FILE__,__LINE__);
+    $modx->log(xPDO::LOG_LEVEL_ERROR,'Ошибка! Не удается проинициализировать bbb.','','createMeeting',__FILE__,__LINE__);
 }
 $newMeeting = $modx->newObject('Meetings');
 $allFormFields = $hook->getValues();
@@ -28,10 +28,11 @@ $newResource = $modx->newObject('modResource');
 $alias = $newResource->cleanAlias($newMeeting->get('name_meeting'));
 $alias .= '-'.$newMeeting->get('id_meeting');
 $resource_settings = array(
-    'pagetitle' => stripslashes($newMeeting->get('name_meeting')),
+    'pagetitle' => $newMeeting->get('name_meeting'),
     'parent' => $modx->getOption('bbb_root_meeting_id'),
     'template' => $modx->getOption('bbb_meeting_tpl_id'),
     'alias' => $alias,
+    'published' => true,
 );
 $newResource->fromArray($resource_settings);
 if ($newResource->save() === false) {

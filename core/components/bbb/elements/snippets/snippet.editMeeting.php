@@ -22,7 +22,7 @@ if($Meeting = $modx->getObject('Meetings', array('id_meeting' => $allFormFields[
     foreach ($allFormFields as $field=>$value){
         if ($field !== 'email_' && $field !== 'editMeeting-submit' && $field !== 'button' ){
             if (is_string($value)){
-                $value = addslashes(trim($value));
+                $value = trim($value);
             }
             $Meeting-> set($field, $value);
         }

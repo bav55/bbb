@@ -34,6 +34,15 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'show_in_tree' => 1,
                 'alias' => 'sent-invitation',
             ),
+            'leaveFeedback' => array(
+                'pagetitle' => 'Оставить отзыв об участии в мероприятии',
+                'description' => 'Страница с формой отправки отзыва об участии в мероприятии',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 1,
+                'show_in_tree' => 1,
+                'alias' => 'leave-feedback',
+            ),
         );
         foreach ($tmp as $k => $v) {
             /* @var modResource $resource */
@@ -73,6 +82,13 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_sentInvitation_page_id'))) {
             if (!$setting->get('value')) {
                 $resource = $modx->getObject('modResource',array('pagetitle' => 'Отправка приглашений на мероприятие'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+            }
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_leaveFeedback_page_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Оставить отзыв об участии в мероприятии'));
                 $setting->set('value', $resource->get('id'));
                 $setting->save();
             }

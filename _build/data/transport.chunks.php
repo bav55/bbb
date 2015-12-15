@@ -63,6 +63,10 @@ $tmp = array(
         'file' => 'message.template',
         'description' => 'Содержание письма рассылки контакту (по умолчанию)',
     ),
+    'form.leave.feedback' => array(
+        'file' => 'form.leave.feedback',
+        'description' => 'Форма отправки отзыва об участии в мероприятии',
+    ),
 );
 
 // Save chunks for setup options

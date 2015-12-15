@@ -24,7 +24,7 @@ $tmp = array(
         'description' => 'Редактирование описания мероприятия (связанный ресурс)',
     ),
     'receivedRequest' => array(
-        'file' => 'sendRequest',
+        'file' => 'receivedRequest',
         'description' => 'Обработка заявки на участие в мероприятии',
     ),
     'clearCacheResource' => array(
@@ -50,6 +50,26 @@ $tmp = array(
     'getUrlParam' => array(
         'file' => 'getUrlParam',
         'description' => 'Сниппет позволяет получить значения параметров из GET-массива',
+    ),
+    'waitMeeting' => array(
+        'file' => 'waitMeeting',
+        'description' => 'Ожидание начала мероприятия. Создает действие USER_INVOLVED_MEETING и переадресовывает на мероприятие',
+    ),
+    'setCookie' => array(
+        'file' => 'setCookie',
+        'description' => 'Устанавливает Cookie',
+    ),
+    'getCookie' => array(
+        'file' => 'getCookie',
+        'description' => 'Получает значение Cookie',
+    ),
+    'leaveFeedback' => array(
+        'file' => 'leaveFeedback',
+        'description' => 'Отправка отзыва об участие в мероприятии, создание действия USER_SENT_REVIEW, редирект на LogoutUrl встречи',
+    ),
+    'leftMeeting' => array(
+        'file' => 'leftMeeting',
+        'description' => 'Cоздание действия USER_LEFT_MEETING - пользователь покинул мероприятие',
     ),
 
 );

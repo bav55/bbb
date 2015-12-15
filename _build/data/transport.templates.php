@@ -5,6 +5,10 @@ $tmp = array(
         'file' => 'meeting.page',
         'description' => 'Шаблон страницы вебинара',
     ),
+    'waitpage.tpl' => array(
+        'file' => 'waitpage',
+        'description' => 'Шаблон страницы ожидания входа на мероприятие',
+    ),
 );
 foreach ($tmp as $k => $v) {
     /* @avr modTemplate $template */

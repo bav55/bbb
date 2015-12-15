@@ -27,14 +27,14 @@ $max = $modx->getOption('max',$scriptProperties,20);
 $output = $modx->getOption('default',$scriptProperties,'');
 
 // get the sanitized value if there is one
-if (isset($_GET[$name])) {
+if (isset($_REQUEST[$name])) {
 if ($int) {
-$value = intval($_GET[$name]);
+$value = intval($_REQUEST[$name]);
 } else {
-if (strlen($_GET[$name]) > $max) {
-$value = filter_var(substr($_GET[$name],0,$max), FILTER_SANITIZE_STRING);
+if (strlen($_REQUEST[$name]) > $max) {
+$value = filter_var(substr($_REQUEST[$name],0,$max), FILTER_SANITIZE_STRING);
 } else {
-$value = filter_var($_GET[$name], FILTER_SANITIZE_STRING);
+$value = filter_var($_REQUEST[$name], FILTER_SANITIZE_STRING);
 }
 }
 $output = $value;

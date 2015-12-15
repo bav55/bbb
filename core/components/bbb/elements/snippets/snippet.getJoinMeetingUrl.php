@@ -23,7 +23,8 @@ $bbb_server = new BigBlueButton();
 if($meeting = $modx->getObject('Meetings', array('id_meeting' => $id_meeting))){
     $client = $modx->getObject('Clients', array('id_client' => $id_client));
     $joinParams = array(
-        'meetingId' => md5($meeting->get('id_meeting')),
+        //'meetingId' => md5($meeting->get('id_meeting')),
+        'meetingId' => $meeting->get('id_meeting'),
         'username' => $client->get('firstname').' '.$client->get('lastname'),
         'createTime' => '',				// Интересно - надо разобраться на будущее.
         'userId' => $id_client,

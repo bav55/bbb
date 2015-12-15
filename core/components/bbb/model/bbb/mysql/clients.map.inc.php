@@ -179,7 +179,7 @@ $xpdo_meta_map['Clients']= array (
     array (
       'alias' => 'email',
       'primary' => false,
-      'unique' => true,
+      'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (

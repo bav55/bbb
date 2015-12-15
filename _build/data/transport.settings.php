@@ -43,13 +43,24 @@ $tmp = array(
         'area' => '',
         'description' => 'Шаблон по умолчанию для страницы вебинара',
     ),
+    'template_waitpage' => array(
+        'value' => '',
+        'xtype' => 'modx-combo-template',
+        'area' => '',
+        'description' => 'Шаблон по умолчанию для страницы ожидания входа на мероприятие',
+    ),
     'sentInvitation_page_id' => array(
         'value' => '',
         'xtype' => 'textfield',
         'area' => '',
         'description' => 'ID ресурса - страницы для отправки приглашений на мероприятие',
     ),
-
+    'leaveFeedback_page_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы для отправки отзыва об участии в мероприятии',
+    ),
     /*
 	'some_setting' => array(
 		'xtype' => 'combo-boolean',
