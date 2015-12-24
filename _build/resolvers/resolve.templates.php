@@ -51,6 +51,14 @@
                     $setting->save();
                 }
             }
+            if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_template_contactPage'))) {
+                if (!$setting->get('value')) {
+                    $contactPage_template = $modx->getObject('modTemplate',array('templatename' => 'contactPage.tpl'));
+                    $contactPage_template_id = $contactPage_template->id;
+                    $setting->set('value',$contactPage_template_id);
+                    $setting->save();
+                }
+            }
             break;
 
         case xPDOTransport::ACTION_UPGRADE:

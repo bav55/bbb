@@ -32,7 +32,7 @@ if(isset($_FILES['photo'])){
      $uploadfile = base_convert(time(), 10, 36).'-'.base_convert(rand(0,2000000000), 10, 36);
      $uploadfile .= '.'.$ext;
     if (copy($_FILES['photo']['tmp_name'], $uploaddir.$uploadfile)){
-        $newClient->set('photo', $uploadfile);
+        $newClient->set('photo',  $uploaddir.$uploadfile);
     }
 }
 $newClient->set('id_creator', $modx->user->get('id'));

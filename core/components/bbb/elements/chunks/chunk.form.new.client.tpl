@@ -1,5 +1,6 @@
 <form class="form-horizontal" id="NewClientForm" method="post" action="" enctype="multipart/form-data">
     <input style="display:none;" type="text" name="email_" value="" />
+    <input type="hidden" name="id_client" value="[[+id_client]]">
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="firstname"  class="col-xs-5 control-label"><span>Имя Отчество:</span></label>
         <div class="col-xs-7">
@@ -33,32 +34,32 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="birthdate" class="col-xs-5 control-label"><span>Дата рождения:</span></label>
         <div class="col-xs-7">
-            <input type="date" class="form-control" id="birthdate" name="birthdate" value="[[+birthdate]]" >
+            <input type="date" class="form-control" id="birthdate" name="birthdate" value="[[+birthdate:strtotime:date=`%Y-%m-%d`]]">
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="gender" class="col-xs-5 control-label"><span>Пол:</span></label>
         <div class="col-xs-2">
             <label class="radio-inline">
-                <input type="radio" name="gender" value="0"> Мужской
+                <input type="radio" name="gender" value="0" [[+gender:ne=`1`:then=`checked`]]> Мужской
             </label>
         </div>
         <div class="col-xs-2">
             <label class="radio-inline">
-                <input type="radio" name="gender" value="1"> Женский
+                <input type="radio" name="gender" value="1"  [[+gender:is=`1`:then=`checked`]]> Женский
             </label>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="address" class="col-xs-5 control-label"><span>Адрес:</span></label>
         <div class="col-xs-7">
-            <textarea rows="2" class="form-control" id="address" name="address" placeholder="Введите адрес"></textarea>
+            <textarea rows="2" class="form-control" id="address" name="address" placeholder="Введите адрес">[[+address]]</textarea>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="comment" class="col-xs-5 control-label"><span>Ваш комментарий:</span></label>
         <div class="col-xs-7">
-            <textarea rows="2" class="form-control" id="comment" name="comment" placeholder="Введите ваш комментарий"></textarea>
+            <textarea rows="2" class="form-control" id="comment" name="comment" placeholder="Введите ваш комментарий">[[+comment]]</textarea>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">

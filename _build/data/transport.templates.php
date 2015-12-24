@@ -9,6 +9,10 @@ $tmp = array(
         'file' => 'waitpage',
         'description' => 'Шаблон страницы ожидания входа на мероприятие',
     ),
+    'contactPage.tpl' => array(
+        'file' => 'contactPage',
+        'description' => 'Шаблон страницы Информации о контакте',
+    ),
 );
 foreach ($tmp as $k => $v) {
     /* @avr modTemplate $template */

@@ -14,6 +14,7 @@ switch ($modx->event->name) {
                 $message = $modx->getObject('modChunk', array("name" => "message.template.tpl"));
                 $extended['invitation_template'] = $invitation->get('content');
                 $extended['message_template'] = $message->get('content');
+                $extended['YandexMoney'] = '';
                 //создадим автоматически первого клиента для этого ведущего - его самого.
                 $client = $modx->newObject('Clients', array(
                     'id_creator' => $user->id,

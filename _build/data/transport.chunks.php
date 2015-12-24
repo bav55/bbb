@@ -67,6 +67,23 @@ $tmp = array(
         'file' => 'form.leave.feedback',
         'description' => 'Форма отправки отзыва об участии в мероприятии',
     ),
+    'clients.item.tpl' => array(
+        'file' => 'clients.item',
+        'description' => 'Строка представления контакта в "Мои контакты"',
+    ),
+    'actions.contact.item.tpl' => array(
+        'file' => 'actions.contact.item',
+        'description' => 'Строка представления действия  в "Информация по контакту"',
+    ),
+    'client.info.tpl' => array(
+        'file' => 'client.info',
+        'description' => 'Сведения о контакте  в "Информация по контакту"',
+    ),
+    'form.edit.client.modal.tpl' => array(
+        'file' => 'form.edit.client.modal',
+        'description' => 'Обертка формы для создания модального окна редактирования данных о контакте',
+    ),
+
 );
 
 // Save chunks for setup options

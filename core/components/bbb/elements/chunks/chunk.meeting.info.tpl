@@ -13,7 +13,7 @@
             <p>
                 <a href="#EditMeetingModal"  class="form-control btn btn-primary" data-toggle="modal" data-target="#EditMeetingModal">Обновить описание мероприятия</i></a>
             </p>
-                        <form name="startMeeting" method="post" action="[[~[[*id]]]]">
+            <form name="startMeeting" method="post" action="[[~[[*id]]]]">
                 <input type="hidden" name="id_meeting" value="[[+id_meeting]]">
                 <input type="hidden" name="id_creator" value="[[+id_creator]]">
                 <input style="display:none;" type="text" name="email_" value="" />
@@ -30,7 +30,7 @@
         [[*content]]
     </article>
     <aside class="col-xs-12 col-sm-4 col-lg-4">
-     [[$tpl.form.request?]]
+        [[$tpl.form.request?]]
         [[!FormIt?
         &hooks=`spam,receivedRequest,email`
         &emailTo=`bav55@yandex.ru`
@@ -54,9 +54,9 @@
             </caption>
 
             <thead>
-                    <th class="col-xs-3">Дата и время действия</th>
-                    <th class="col-xs-3">Контакт</th>
-                    <th class="col-xs-5">Действие</th>
+            <th class="col-xs-3">Дата и время действия</th>
+            <th class="col-xs-3">Контакт</th>
+            <th class="col-xs-5">Действие</th>
             </thead>
             <tbody>
             [[!pdoResources?
@@ -64,17 +64,17 @@
             &loadModels=`bbb`
             &class=`Actions`
             &leftJoin=`{
-                     "Client":{
-                         "class": "Clients",
-                            "on": "Actions.id_client = Client.id_client"
-                      },
-                     "Actiontype":{
-                         "class": "ActionTypes",
-                         "on": "Actions.id_actiontype = Actiontype.id"
-                     }
+            "Client":{
+            "class": "Clients",
+            "on": "Actions.id_client = Client.id_client"
+            },
+            "Actiontype":{
+            "class": "ActionTypes",
+            "on": "Actions.id_actiontype = Actiontype.id"
+            }
             }`
             &select=`{
-                "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
+            "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
             }`
             &where=`["id_meeting = [[+id_meeting]]"]`
             &sortby=`timestamp_action`
@@ -87,7 +87,7 @@
         </table>
         <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
             <a href="[[~[[++bbb_sentInvitation_page_id]]]]?&id_meeting=[[+id_meeting]]&redirect=[[+id_resource]]" class="form-control btn btn-primary">Отправить приглашение на это мероприятие</a>
-         </div>
+        </div>
     </div>
 </div>
 [[!FormIt?
@@ -105,7 +105,7 @@
         ]]
     </div>
 </div>
- [[!$tpl.form.edit.meeting.modal?id_meeting=[[+id_meeting]]]]
+[[!$tpl.form.edit.meeting.modal?id_meeting=[[+id_meeting]]]]
 [[!FormIt?
 &hooks=`spam,editMeeting,redirect`
 &submitVar=`editMeeting-submit`

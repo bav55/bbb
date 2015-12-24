@@ -1,7 +1,8 @@
 <?php
 $id_resource = $hook -> getValue('id_resource');
 if($resource = $modx -> getObject('modResource',$id_resource)){
-    $content_resource = $hook -> getValue('content_meeting');
+    $content_resource = $_POST['content_meeting'];
+    $content_resource = strip_tags($content_resource,'<p><a><div><b><i><h4><u><img>');
     // загрузим изображение  и добавим к ресурсу через TV
     if(isset($_FILES['image_meeting'])){
         $sourceId = $modx -> getOption('bbb_meeting_photo_source');

@@ -71,6 +71,18 @@ $tmp = array(
         'file' => 'leftMeeting',
         'description' => 'Cоздание действия USER_LEFT_MEETING - пользователь покинул мероприятие',
     ),
+    'editClient' => array(
+        'file' => 'editClient',
+        'description' => 'Редактирование данных контакта',
+    ),
+    'deleteClient' => array(
+        'file' => 'deleteClient',
+        'description' => 'Удаление контакта и всех действий по нему',
+    ),
+    'uploadPhoto' => array(
+        'file' => 'uploadPhoto',
+        'description' => 'PreHook для UpdateProfile - загрузка фотографии в профиль пользователя',
+    ),
 
 );
 

@@ -61,6 +61,36 @@ $tmp = array(
         'area' => '',
         'description' => 'ID ресурса - страницы для отправки отзыва об участии в мероприятии',
     ),
+    'contactPage_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы с информацией о контакте',
+    ),
+    'template_contactPage' => array(
+        'value' => '',
+        'xtype' => 'modx-combo-template',
+        'area' => '',
+        'description' => 'Шаблон по умолчанию для страницы с информацией о контакте',
+    ),
+    'my_contacts_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы Мои контакты',
+    ),
+    'my_meetings_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы  Мои  мероприятия',
+    ),
+    'my_settings_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы Мои настройки',
+    ),
     /*
 	'some_setting' => array(
 		'xtype' => 'combo-boolean',

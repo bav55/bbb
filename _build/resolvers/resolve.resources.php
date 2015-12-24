@@ -43,6 +43,43 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'show_in_tree' => 1,
                 'alias' => 'leave-feedback',
             ),
+            'contactPage' => array(
+                'pagetitle' => 'Информация о контакте',
+                'description' => 'Страница с информацией о контакте',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 1,
+                'show_in_tree' => 1,
+                'alias' => 'contact-info',
+            ),
+            'myContactsPage' => array(
+                'pagetitle' => 'Мои контакты',
+                'description' => 'Страница личного кабинета - Мои контакты',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 0,
+                'show_in_tree' => 1,
+                'alias' => 'my-contacts',
+            ),
+            'myMeetingsPage' => array(
+                'pagetitle' => 'Мои мероприятия',
+                'description' => 'Страница личного кабинета - Мои мероприятия',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 0,
+                'show_in_tree' => 1,
+                'alias' => 'my-meetings',
+            ),
+            'mySettingsPage' => array(
+                'pagetitle' => 'Мои наcтройки',
+                'description' => 'Страница личного кабинета - Мои настройки',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 0,
+                'show_in_tree' => 1,
+                'alias' => 'my-settings',
+            ),
+
         );
         foreach ($tmp as $k => $v) {
             /* @var modResource $resource */
@@ -89,6 +126,40 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_leaveFeedback_page_id'))) {
             if (!$setting->get('value')) {
                 $resource = $modx->getObject('modResource',array('pagetitle' => 'Оставить отзыв об участии в мероприятии'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+            }
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_contactPage_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Информация о контакте'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+                }
+        }
+        if ($template = $modx->getObject('modSystemSetting', array('key' => 'bbb_template_contactPage'))) {
+            $resource = $modx->getObject('modResource',array('pagetitle' => 'Информация о контакте'));
+            $resource->set('template', $template->get('value'));
+            $modx->log(modX::LOG_LEVEL_ERROR, 'template_id='.$template->get('value'));
+            $resource->save();
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_my_contacts_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Мои контакты'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+            }
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_my_meetings_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Мои мероприятия'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+            }
+        }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_my_settings_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Мои наcтройки'));
                 $setting->set('value', $resource->get('id'));
                 $setting->save();
             }

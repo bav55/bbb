@@ -46,7 +46,7 @@ foreach($allFormFields['clients'] as $key => $value){
     //отправим письмо клиенту
     $modx->getService('mail', 'mail.modPHPMailer');
     $modx->mail->set(modMail::MAIL_BODY,$output);
-    $modx->mail->set(modMail::MAIL_FROM, $modx->user->Profile->email);
+    $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
     $modx->mail->set(modMail::MAIL_FROM_NAME,$modx->user->Profile->fullname);
     $modx->mail->set(modMail::MAIL_SUBJECT,'Приглашение на мероприятие "'.$meeting->get('name_meeting').'"');
     $modx->mail->address('to',$client->get('email'));
