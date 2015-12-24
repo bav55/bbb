@@ -1,3 +1,22 @@
-<p>[[+id_meeting]] - <a href="[[+uri]]">[[stripslash?str=`[[+name_meeting]]`]] </a> - [[+duration]] мин.
-    <a href="[[~8]]&id_meeting=[[+id_meeting]]"  data-toggle="modal" data-target="#EditMeetingModal"><i class="fa fa-pencil-square-o fa-lg text-success"></i></a>
-    <a href="[[~1]]"><i class="fa fa-times fa-lg text-danger"></i></a></p>
+    <div class="col-xs-12 col-md-12 thumbnail">
+            <div class="col-xs-7">
+                <p>
+                       <a href="[[+uri]]">
+                        <h4>[[+name_meeting]]</h4>
+                     </a>
+                    <small>[[+date_meeting:strtotime:date=`%d.%m.%Y, %H:%M`]] (время Московское)</small>
+                </p>
+                    <p>
+                    Поступило заявок:: <b>28</b><br>
+                    Отправлено приглашений: <b>12</b><br>
+                    </p>
+            </div>
+        <div class="col-xs-5">
+            <p>
+            Стоимость участия: <b>[[+cost]] руб.</b><br>
+            Продолжительность: <b>[[+duration]] минут</b><br>
+            Участников: <b>[[+maxParticipants]] чел.</b><br>
+
+            </p>
+        </div>
+    </div>

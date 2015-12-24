@@ -1,7 +1,9 @@
 <hr/>
+<div class="container">
+    <div class="row">
 [[!pdoPage?
 &snippet=`pdoResources`
-&tpl=`meetings.item.tpl`
+&tpl=`meeting.item.tpl`
 &showLog=`0`
 &class=`Meetings`
 &loadModels=`bbb`
@@ -22,11 +24,18 @@
 &pageLimit=`7`
 &return=`tpl`
 ]]
-[[+page.nav]]
-<hr/>
+        <hr/>
+    </div>
+    <div class="row center-block>">
+        [[+page.nav]]
+    </div>
+    <div class="row center-block>">
 <a href="#NewMeetingModal" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#NewMeetingModal">
     Запланировать новое мероприятие
 </a>
+    </div>
+</div>
+<div class="clearfix"></div>
 
 <!-- 1 -->
 [[!$tpl.form.new.meeting.modal]]

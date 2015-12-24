@@ -1,4 +1,6 @@
 <hr/>
+<div class="container">
+<div class="row">
 [[!pdoPage?
 &snippet=`pdoResources`
 &tpl=`clients.item.tpl`
@@ -8,14 +10,23 @@
 &loadModels=`bbb`
 &class=`Clients`
 &where=`["id_creator = [[+modx.user.id]]"]`
-&limit=`10`
+&limit=`9`
 &pageLimit=`7`
 ]]
-[[+page.nav]]
+
 <hr/>
-<a href="#NewClientModal" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#NewClientModal">
-    Добавить новый контакт
-</a>
+</div>
+    <div class="row center-block>">
+        [[+page.nav]]
+    </div>
+    <div class="row center-block>">
+        <a href="#NewClientModal" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#NewClientModal">
+            Добавить новый контакт
+        </a>
+    </div>
+</div>
+<div class="clearfix"></div>
+
 
 [[!$tpl.form.new.client.modal]]
 
