@@ -16,7 +16,7 @@ $xpdo_meta_map['Meetings']= array (
     'logoutUrl' => '',
     'maxParticipants' => -1,
     'record' => 0,
-    'paid' => 0,
+    'cost' => 0,
     'duration' => 0,
     'dialNumber' => '',
     'voiceBridge' => '',
@@ -107,12 +107,11 @@ $xpdo_meta_map['Meetings']= array (
       'null' => false,
       'default' => 0,
     ),
-    'paid' => 
+    'cost' => 
     array (
-      'dbtype' => 'tinyint',
-      'precision' => '1',
-      'attributes' => 'unsigned',
-      'phptype' => 'boolean',
+      'dbtype' => 'int',
+      'precision' => '6',
+      'phptype' => 'integer',
       'null' => false,
       'default' => 0,
     ),

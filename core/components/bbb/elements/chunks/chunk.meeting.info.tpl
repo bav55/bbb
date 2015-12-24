@@ -9,6 +9,7 @@
             <h5>Ведущий: <b>[[+fullname]]</b></h5>
             <p>Дата и время мероприятия: </p>
             <p><b>[[+date_meeting:strtotime:date=`%d.%m.%Y, %H:%M`]]<br/> <small>(время Московское)</small></b></p>
+            [[+cost:ne=`0`:then=`<p>Стоимость участия: <b>[[+cost]] руб.</b></p>`:else=``]]
             [[!+modx.user.id:is=`[[+id_creator]]`:then=`
             <p>
                 <a href="#EditMeetingModal"  class="form-control btn btn-primary" data-toggle="modal" data-target="#EditMeetingModal">Обновить описание мероприятия</i></a>

@@ -50,6 +50,12 @@
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <label for="duration" class="col-xs-5 control-label"><span>Стоимость участия:</span></label>
+        <div class="col-xs-7">
+            <input  type="number" min="0" id="cost" class="form-control" name="cost" value="[[+cost]]" placeholder="в российских рублях">
+        </div>
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="col-xs-offset-5 col-xs-7">
             <div class="checkbox">
                 <label>
@@ -59,17 +65,9 @@
             </div>
         </div>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="col-xs-offset-5 col-xs-7">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="paid" name="paid" value="1" [[+paid:is=`1`:then=`checked`]]/>
-                    <span>Платное мероприятие</span>
-                </label>
-            </div>
-        </div>
-    </div>
-    <!--
+
+
+        <!--
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 ">
                         <input  type="submit" class="form-control button btn-primary" name="submit" value="Создать мероприятие"/>

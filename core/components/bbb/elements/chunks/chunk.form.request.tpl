@@ -1,6 +1,6 @@
 [[!+fi.successMessage]]
 <form class="form-horizontal" id="NewRequestForm" method="post" action="">
-    <legend>[[+paid:is=`1`:then=`Подать заявку на участие`:else=`Получить приглашение`]]</legend>
+    <legend>[[+cost:is=`0`:then=`Получить приглашение`:else=`Подать заявку на участие`]]</legend>
     <input style="display:none;" type="text" name="email_" value="" />
     <input type="hidden" name="id_meeting" value="[[+id_meeting]]">
     <input type="hidden" name="id_creator" value="[[+id_creator]]">
@@ -30,7 +30,7 @@
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12">
         <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 ">
-            <input  type="submit" class="form-control button btn-primary btn-md" name="receivedRequest-submit" value="[[+paid:is=`1`:then=`Отправить заявку`:else=`Получить приглашение`]]"/>
+            <input  type="submit" class="form-control button btn-primary btn-md" name="receivedRequest-submit" value="[[+cost:is=`0`:then=`Получить приглашение`:else=`Отправить заявку`]]"/>
         </div>
     </div>
 </form>

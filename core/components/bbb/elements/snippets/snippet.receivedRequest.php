@@ -33,10 +33,10 @@ if($action->save() === false){
     $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
     return false;
 }
-
+sleep(1);
 $meeting = $modx->getObject('Meetings',array('id_meeting' =>$allFormFields['id_meeting'] ));
 //если мероприятие бесплатное, сразу отправим приглашение пользователю.
-if($meeting->get('paid') == 0){ // мероприятие бесплатное
+if($meeting->get('cost') == 0){ // мероприятие бесплатное
     //автоматически отправим приглашение подавшему заявку
     $placeholders = array(
         '%firstname%' => $client->get('firstname'),

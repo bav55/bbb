@@ -13,7 +13,7 @@
         <field key="logoutUrl" dbtype="varchar" precision="255" phptype="string" null="true" default="" />
         <field key="maxParticipants" dbtype="int" precision="3" phptype="integer" null="true" default="-1" />
         <field key="record" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" />
-        <field key="paid" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" />
+        <field key="cost" dbtype="int" precision="6" phptype="integer" null="false" default="0" />
         <field key="duration" dbtype="int" precision="3" phptype="integer" null="true" default="0" />
         <field key="dialNumber" dbtype="varchar" precision="20" phptype="string" null="true" default="" />
         <field key="voiceBridge" dbtype="varchar" precision="20" phptype="string" null="true" default="" />

@@ -12,7 +12,7 @@ if($Meeting = $modx->getObject('Meetings', array('id_meeting' => $allFormFields[
     if($allFormFields['email_']!=''){ return false;}        //spam-проверка
     //правильно обработаем чекбоксы, чтобы в базе верно происходило обновление
     if(!isset($allFormFields['record'])){ $allFormFields['record'] = 0; }
-    if(!isset($allFormFields['paid'])){ $allFormFields['paid'] = 0; }
+    if(!isset($allFormFields['cost'])){ $allFormFields['cost'] = 0; }
     /*
             //--- для отладки удобно print_r выводить в виде строки
     $string = print_r($allFormFields, true);
