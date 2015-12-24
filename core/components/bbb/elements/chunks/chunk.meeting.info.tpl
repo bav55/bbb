@@ -33,7 +33,7 @@
     <aside class="col-xs-12 col-sm-4 col-lg-4">
         [[$tpl.form.request?]]
         [[!FormIt?
-        &hooks=`spam,receivedRequest,email`
+        &hooks=`spam,email,receivedRequest`
         &emailTo=`bav55@yandex.ru`
         &emailSubject=`Поступила новая заявка на участие`
         &emailTpl=`tpl.request.email`

@@ -79,7 +79,15 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'show_in_tree' => 1,
                 'alias' => 'my-settings',
             ),
-
+            'paymentPage' => array(
+                'pagetitle' => 'Оплата участия в мероприятии',
+                'description' => 'Страница для оплаты участия в мероприятии',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 1,
+                'show_in_tree' => 1,
+                'alias' => 'pay',
+            ),
         );
         foreach ($tmp as $k => $v) {
             /* @var modResource $resource */
@@ -164,6 +172,20 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 $setting->save();
             }
         }
+        if ($setting = $modx->getObject('modSystemSetting', array('key' => 'bbb_payment_id'))) {
+            if (!$setting->get('value')) {
+                $resource = $modx->getObject('modResource',array('pagetitle' => 'Оплата участия в мероприятии'));
+                $setting->set('value', $resource->get('id'));
+                $setting->save();
+            }
+        }
+        if ($template = $modx->getObject('modTemplate', array('templatename' => 'paymentPage.tpl'))) {
+            $resource = $modx->getObject('modResource',array('pagetitle' => 'Оплата участия в мероприятии'));
+            $resource->set('template', $template->get('id'));
+            $resource->save();
+        }
+
+
         break;
 
     case xPDOTransport::ACTION_UPGRADE:

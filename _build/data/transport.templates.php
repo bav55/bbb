@@ -13,6 +13,10 @@ $tmp = array(
         'file' => 'contactPage',
         'description' => 'Шаблон страницы Информации о контакте',
     ),
+    'paymentPage.tpl' => array(
+        'file' => 'paymentPage',
+        'description' => 'Шаблон страницы Оплата участия в мероприятии',
+    ),
 );
 foreach ($tmp as $k => $v) {
     /* @avr modTemplate $template */

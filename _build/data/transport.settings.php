@@ -91,6 +91,12 @@ $tmp = array(
         'area' => '',
         'description' => 'ID ресурса - страницы Мои настройки',
     ),
+    'payment_id' => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area' => '',
+        'description' => 'ID ресурса - страницы Оплата участия в мероприятии',
+    ),
     /*
 	'some_setting' => array(
 		'xtype' => 'combo-boolean',

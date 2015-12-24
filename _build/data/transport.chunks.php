@@ -83,6 +83,14 @@ $tmp = array(
         'file' => 'form.edit.client.modal',
         'description' => 'Обертка формы для создания модального окна редактирования данных о контакте',
     ),
+    'page.payment.tpl' => array(
+        'file' => 'page.payment',
+        'description' => 'Чанк оформления страницы оплаты участия в мероприятии',
+    ),
+    'needPay.email.tpl' => array(
+        'file' => 'needPay.email',
+        'description' => 'Чанк оформления письма об оплате участнику платного мероприятия',
+    ),
 
 );
 

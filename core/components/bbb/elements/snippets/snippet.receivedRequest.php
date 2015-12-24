@@ -68,8 +68,8 @@ if($meeting->get('cost') == 0){ // мероприятие бесплатное
     $chunk = $modx->newObject('modChunk', array('name' => "{tmp}-{$uniqid}"));
     $chunk->setCacheable(false);
     $output = $chunk->process($props, $message);
-    //готово сообщение для пользователя.
-    //отправим письмо клиенту
+    //готово сообщение для контакта.
+    //отправим ему письмо
     $modx->getService('mail', 'mail.modPHPMailer');
     $modx->mail->set(modMail::MAIL_BODY,$output);
     $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
@@ -95,5 +95,35 @@ if($meeting->get('cost') == 0){ // мероприятие бесплатное
         $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
         return false;
     }
+    return true;
 }
-return true;
+else{ //мероприятия платное -
+    //Отправим письмо о том, что заявка принята и для оплаты нужно пройти по ссылке.
+    $payment_link = $modx -> makeUrl($modx ->getOption('bbb_payment_id'),'', array('id_client' => $id_client, 'id_meeting' => $meeting->get('id_meeting')), 'full');
+    $properties = array(
+        'firstname' => $client ->get('firstname'),
+        'lastname' => $client ->get('lastname'),
+        'cost' => $meeting -> get('cost'),
+        'payment_link' => $payment_link,
+    );
+    $message = $modx -> getChunk('needPay.email.tpl',$properties);
+    $modx->getService('mail', 'mail.modPHPMailer');
+    $modx->mail->set(modMail::MAIL_BODY,$message);
+    $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
+    $modx->mail->set(modMail::MAIL_FROM_NAME,$modx->user->Profile->fullname);
+    $modx->mail->set(modMail::MAIL_SUBJECT,'Ваша заявка на участие отправлена ведущему.');
+    $modx->mail->address('to',$client->get('email'));
+    $modx->mail->address('reply-to',$modx->user->Profile->email);
+    $modx->mail->setHTML(true);
+    if (!$modx->mail->send()) {
+        $modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$modx->mail->mailer->ErrorInfo);
+        return false;
+    }
+    $modx->mail->reset();
+    //перенаправим на страницу оплаты
+    $payment_id = $modx -> getOption('bbb_payment_id');
+    $url = $modx -> makeUrl($payment_id, '', array('id_client' => $id_client, 'id_meeting' =>  $meeting->get('id_meeting')));
+    $modx->sendRedirect($url);
+    return true;
+}
+
