@@ -83,6 +83,10 @@ $tmp = array(
         'file' => 'uploadPhoto',
         'description' => 'PreHook для UpdateProfile - загрузка фотографии в профиль пользователя',
     ),
+    'setPlaceholdersFromRequest' => array(
+        'file' => 'setPlaceholdersFromRequest',
+        'description' => 'Устанавливает плейсхолдеры на странице из параметров массива $_REQUEST',
+    ),
 
 );
 
