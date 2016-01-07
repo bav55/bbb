@@ -14,6 +14,9 @@
             <p>
                 <a href="#EditMeetingModal"  class="form-control btn btn-primary" data-toggle="modal" data-target="#EditMeetingModal">Обновить описание мероприятия</i></a>
             </p>
+            <p>
+                <a href="[[~[[++bbb_sentInvitation_page_id]]]]?&id_meeting=[[+id_meeting]]&redirect=[[+id_resource]]" class="form-control btn btn-success">Отправить приглашения</a>
+            </p>
             <form name="startMeeting" method="post" action="[[~[[*id]]]]">
                 <input type="hidden" name="id_meeting" value="[[+id_meeting]]">
                 <input type="hidden" name="id_creator" value="[[+id_creator]]">
@@ -49,47 +52,194 @@
 <div class="row">
     <hr/>
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <table class="table table-hover table-striped">
-            <caption>
-                <h4>Действия по данному мероприятию</h4>
-            </caption>
+        <h4>Действия по данному мероприятию</h4>
+        <div class="col-xs-12 well">
 
-            <thead>
-            <th class="col-xs-3">Дата и время действия</th>
-            <th class="col-xs-3">Контакт</th>
-            <th class="col-xs-5">Действие</th>
-            </thead>
-            <tbody>
-            [[!pdoResources?
-            &tpl=`actions.item.tpl`
-            &loadModels=`bbb`
-            &class=`Actions`
-            &leftJoin=`{
-            "Client":{
-            "class": "Clients",
-            "on": "Actions.id_client = Client.id_client"
-            },
-            "Actiontype":{
-            "class": "ActionTypes",
-            "on": "Actions.id_actiontype = Actiontype.id"
-            }
-            }`
-            &select=`{
-            "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
-            }`
-            &where=`["id_meeting = [[+id_meeting]]"]`
-            &sortby=`timestamp_action`
-            &sortdir=`DESC`
-            &showLog=`1`
-            ]]
+            <ul id="myTab" class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#tab-one" data-toggle="tab"><i class="fa fa-bullhorn"></i>Заявки и приглашения</a>
+                </li>
+                <li class=""><a href="#tab-two" data-toggle="tab"><i class="fa fa-paper-plane"></i>Участие в мероприятии</a>
+                </li>
+                <li class=""><a href="#tab-three" data-toggle="tab"><i class="fa fa-paper-plane"></i>Отзывы участников</a>
+                </li>
+            </ul>
 
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="tab-one">
+                    <div class="row text-center">
+                            <br>
+                            <h4>Полученные заявки и отправленные приглашения</h4>
+                    </div>
 
-            </tbody>
-        </table>
-        <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
-            <a href="[[~[[++bbb_sentInvitation_page_id]]]]?&id_meeting=[[+id_meeting]]&redirect=[[+id_resource]]" class="form-control btn btn-primary">Отправить приглашение на это мероприятие</a>
-        </div>
+                        [[!pdoPage?
+                        &element=`pdoResources`
+                        &pageLimit=`7`
+                        &tpl=`actions.item.tpl`
+                        &loadModels=`bbb`
+                        &class=`Actions`
+                        &leftJoin=`{
+                        "Client":{
+                        "class": "Clients",
+                        "on": "Actions.id_client = Client.id_client"
+                        },
+                        "Actiontype":{
+                        "class": "ActionTypes",
+                        "on": "Actions.id_actiontype = Actiontype.id"
+                        }
+                        }`
+                        &select=`{
+                        "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
+                        }`
+                        &where=`["id_meeting = [[+id_meeting]] and (Actiontype.name = 'RECEIVED_REQUEST' or Actiontype.name = 'SENT_INVITATION')"]`
+                        &sortby=`lastname, timestamp_action`
+                        &sortdir=`DESC`
+                        &showLog=`0`
+                        &limit=`10`
+                        &ajaxMode=`button`
+                        &ajaxTplMore=`@INLINE <p class="center-block"><br> <button class="btn btn-default btn-more">[[%pdopage_more]]</button></p>`
+                        &ajaxElemWrapper=`#pdopage1`
+                        &ajaxElemRows=`#pdopage1 .rows`
+                        &ajaxElemPagination=`#pdopage1 .pagination`
+                        &ajaxElemLink=`#pdopage1 .pagination a`
+                        &ajaxElemMore=`#pdopage1 .btn-more`
+                        &toPlaceholder=`actions1`
+                        &pageNavVar=`page1.nav`
+                        &pageVarKey=`page1`
+                        &totalVar=`page1.total`
+                        ]]
+                    [[+actions1:is=``:then=`<p class="alert alert-info">Действий не найдено</p>`:else=`
+                    <div class="row">
+                        <div class="col-sm-3 text-center hidden-xs"><h5>Дата и время действия</h5></div>
+                        <div class="col-sm-4 text-center hidden-xs"><h5>Контакт</h5></div>
+                        <div class="col-sm-5 text-center hidden-xs"><h5>Действие</h5></div>
+                    </div>`]]
+                    <div id="pdopage1">
+                        <div class="rows">
+                    [[+actions1]]
+                        </div>
+                        [[+page1.nav]]
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="tab-two">
+                    <div class="row text-center">
+                        <br>
+                        <h4>Участие в мероприятии</h4>
+                    </div>
+
+                    [[!pdoPage?
+                    &element=`pdoResources`
+                    &pageLimit=`7`
+                    &tpl=`actions.item.tpl`
+                    &loadModels=`bbb`
+                    &class=`Actions`
+                    &leftJoin=`{
+                    "Client":{
+                    "class": "Clients",
+                    "on": "Actions.id_client = Client.id_client"
+                    },
+                    "Actiontype":{
+                    "class": "ActionTypes",
+                    "on": "Actions.id_actiontype = Actiontype.id"
+                    }
+                    }`
+                    &select=`{
+                    "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
+                    }`
+                    &where=`["id_meeting = [[+id_meeting]] and Actiontype.name in ('MEETING_IS_CREATED','MEETING_STARTED','USER_INVOLVED_MEETING','USER_LEFT_MEETING','MEETING_ENDED')"]`
+                    &sortby=`lastname, timestamp_action`
+                    &sortdir=`DESC`
+                    &showLog=`0`
+                    &limit=`10`
+                    &ajaxMode=`button`
+                    &ajaxTplMore=`@INLINE <p class="center-block"><br> <button class="btn btn-default btn-more">[[%pdopage_more]]</button></p>`
+                    &ajaxElemWrapper=`#pdopage2`
+                    &ajaxElemRows=`#pdopage2 .rows`
+                    &ajaxElemPagination=`#pdopage2 .pagination`
+                    &ajaxElemLink=`#pdopage2 .pagination a`
+                    &ajaxElemMore=`#pdopage2 .btn-more`
+                    &toPlaceholder=`actions2`
+                    &pageNavVar=`page2.nav`
+                    &pageNavVar=`page2.nav`
+                    &pageVarKey=`page2`
+                    &totalVar=`page2.total`
+                    ]]
+                    [[+actions2:is=``:then=`<p class="alert alert-info">Действий не найдено</p>`:else=`
+                    <div class="row">
+                        <div class="col-sm-3 text-center hidden-xs"><h5>Дата и время действия</h5></div>
+                        <div class="col-sm-4 text-center hidden-xs"><h5>Контакт</h5></div>
+                        <div class="col-sm-5 text-center hidden-xs"><h5>Действие</h5></div>
+                    </div>`]]
+                    <div id="pdopage2">
+                        <div class="rows">
+                            [[+actions2]]
+                        </div>
+                        [[+page2.nav]]
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="tab-three">
+                    <div class="row text-center">
+                        <br>
+                        <h4>Отзывы участников</h4>
+                    </div>
+
+                    [[!pdoPage?
+                    &element=`pdoResources`
+                    &pageLimit=`7`
+                    &tpl=`actions.item.tpl`
+                    &loadModels=`bbb`
+                    &class=`Actions`
+                    &leftJoin=`{
+                    "Client":{
+                    "class": "Clients",
+                    "on": "Actions.id_client = Client.id_client"
+                    },
+                    "Actiontype":{
+                    "class": "ActionTypes",
+                    "on": "Actions.id_actiontype = Actiontype.id"
+                    }
+                    }`
+                    &select=`{
+                    "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
+                    }`
+                    &where=`["id_meeting = [[+id_meeting]] and Actiontype.name = 'USER_SENT_REVIEW'"]`
+                    &sortby=`lastname, timestamp_action`
+                    &sortdir=`DESC`
+                    &showLog=`0`
+                    &limit=`10`
+                    &ajaxMode=`button`
+                    &ajaxTplMore=`@INLINE <p class="center-block"><br> <button class="btn btn-default btn-more">[[%pdopage_more]]</button></p>`
+                    &ajaxElemWrapper=`#pdopage3`
+                    &ajaxElemRows=`#pdopage3 .rows`
+                    &ajaxElemPagination=`#pdopage3 .pagination`
+                    &ajaxElemLink=`#pdopage3 .pagination a`
+                    &ajaxElemMore=`#pdopage3 .btn-more`
+                    &toPlaceholder=`actions3`
+                    &pageNavVar=`page3.nav`
+                    &pageNavVar=`page3.nav`
+                    &pageVarKey=`page3`
+                    &totalVar=`page3.total`
+                    ]]
+                    [[+actions3:is=``:then=`<p class="alert alert-info">Действий не найдено</p>`:else=`
+                    <div class="row">
+                        <div class="col-sm-3 text-center hidden-xs"><h5>Дата и время действия</h5></div>
+                        <div class="col-sm-4 text-center hidden-xs"><h5>Контакт</h5></div>
+                        <div class="col-sm-5 text-center hidden-xs"><h5>Действие</h5></div>
+                    </div>`]]
+                    <div id="pdopage3">
+                        <div class="rows">
+                            [[+actions3]]
+                        </div>
+                        [[+page3.nav]]
+                    </div>
+
+                </div>
+            </div>
+
     </div>
+</div>
 </div>
 [[!FormIt?
 &hooks=`sentInvitation`

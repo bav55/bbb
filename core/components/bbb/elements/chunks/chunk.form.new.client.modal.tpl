@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer" style="border:0">
                 <button type="button" form="NewClientForm" class="btn btn-default" data-dismiss="modal">Отменить</button>
-                <button form="NewClientForm" type="submit" class="btn btn-primary">Добавить контакт</button>
+                <input form="NewClientForm" type="submit" class="btn btn-primary" name="newClient-submit" value="Добавить контакт">
             </div>
         </div>
     </div>

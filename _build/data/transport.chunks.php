@@ -91,7 +91,14 @@ $tmp = array(
         'file' => 'needPay.email',
         'description' => 'Чанк оформления письма об оплате участнику платного мероприятия',
     ),
-
+    'tpl.form.register' => array(
+        'file' => 'form.register',
+        'description' => 'Чанк оформления формы регистрации ведущего (автора) на сайте',
+    ),
+    'tpl.form.login' => array(
+        'file' => 'form.login',
+        'description' => 'Чанк оформления формы входа  ведущего (автора) на сайте',
+    ),
 );
 
 // Save chunks for setup options

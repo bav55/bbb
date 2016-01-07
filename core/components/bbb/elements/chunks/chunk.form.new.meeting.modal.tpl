@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer" style="border:0px;">
                 <button type="button" form="NewMeetingForm" class="btn btn-default" data-dismiss="modal">Отменить</button>
-                <button form="NewMeetingForm" type="submit" class="btn btn-primary">Создать мероприятие</button>
+                <input form="NewMeetingForm" type="submit" class="btn btn-primary" name="newMeeting-submit" value="Создать мероприятие">
             </div>
         </div>
     </div>
