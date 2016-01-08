@@ -56,11 +56,11 @@
         <div class="col-xs-12 well">
 
             <ul id="myTab" class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#tab-one" data-toggle="tab"><i class="fa fa-bullhorn"></i>Заявки и приглашения</a>
+                <li class="active"><a href="#tab-one" data-toggle="tab"><i class="fa fa-bullhorn"></i>  Заявки и приглашения</a>
                 </li>
-                <li class=""><a href="#tab-two" data-toggle="tab"><i class="fa fa-paper-plane"></i>Участие в мероприятии</a>
+                <li class=""><a href="#tab-two" data-toggle="tab"><i class="fa fa-microphone"></i>  Участие в мероприятии</a>
                 </li>
-                <li class=""><a href="#tab-three" data-toggle="tab"><i class="fa fa-paper-plane"></i>Отзывы участников</a>
+                <li class=""><a href="#tab-three" data-toggle="tab"><i class="fa fa-check-circle"></i>  Отзывы участников</a>
                 </li>
             </ul>
 
@@ -226,7 +226,7 @@
                     <div class="row">
                         <div class="col-sm-3 text-center hidden-xs"><h5>Дата и время действия</h5></div>
                         <div class="col-sm-4 text-center hidden-xs"><h5>Контакт</h5></div>
-                        <div class="col-sm-5 text-center hidden-xs"><h5>Действие</h5></div>
+                        <div class="col-sm-5 text-center hidden-xs"><h5>Отзывы</h5></div>
                     </div>`]]
                     <div id="pdopage3">
                         <div class="rows">

@@ -26,7 +26,7 @@ if ($itsAllGood == true) {
     $holdMessage = '
 			<div id="status">
 				<p>Ваше мероприятие еще не началось. Пожалуйста, подождите пока ведущий начнет встречу...</p>
-				<img src="'.$ajaxloader_path.'ajax-loader.gif" alt="...Соединяемся с сервером..." />
+				<i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
 				<p>Вы автоматически войдете на мероприятие, как только оно начнется.</p>
 			</div>
 		';
@@ -61,6 +61,6 @@ if ($itsAllGood == true) {
         ));
         //Перенаправить пользователя на мероприятие
         if($logonUrl != '') $modx->sendRedirect($logonUrl);
-            //return $result;
-        }
+        //return $result;
+    }
 }

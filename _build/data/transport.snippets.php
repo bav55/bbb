@@ -87,7 +87,10 @@ $tmp = array(
         'file' => 'setPlaceholdersFromRequest',
         'description' => 'Устанавливает плейсхолдеры на странице из параметров массива $_REQUEST',
     ),
-
+    'enablehtml' => array(
+        'file' => 'enablehtml',
+        'description' => 'Работает как PreHook у UpdateProfile - позволяет оставлять требуемые html-теги в данных',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

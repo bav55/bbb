@@ -79,6 +79,15 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'show_in_tree' => 1,
                 'alias' => 'my-settings',
             ),
+            'editMySettingsPage' => array(
+                'pagetitle' => 'Редактирование моих настроек',
+                'description' => 'Страница личного кабинета - Редактирование профиля ведущего',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 0,
+                'show_in_tree' => 1,
+                'alias' => 'update-profile',
+            ),
             'paymentPage' => array(
                 'pagetitle' => 'Оплата участия в мероприятии',
                 'description' => 'Страница для оплаты участия в мероприятии',
