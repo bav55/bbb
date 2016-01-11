@@ -1,6 +1,8 @@
 <form class="form-horizontal" id="NewMeetingForm" method="post" action="">
     <input style="display:none;" type="text" name="email_" value="" />
     <input type="hidden" name="id_meeting" value="[[+id_meeting]]">
+    <input type="hidden" name="moderatorPw"  value="qwerty"  required/>
+    <input type="hidden" name="attendeePw"  value="asdfgh"  required/>
     <div class="form-group col-xs-12 col-sm 12">
         <label for="name_meeting" class="col-xs-3 col-sm-3 control-label"><span>Название мероприятия:</span></label>
         <div class="col-xs-9 col-sm-9">
@@ -31,6 +33,7 @@
             <input type="text" class="form-control" id="logoutUrl" name="logoutUrl"  value="[[+logoutUrl]]" placeholder="http://web-meeting.ru" />
         </div>
     </div>
+    <!--
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label for="moderatorPw" class="col-xs-5 control-label"><span>Пароль ведущего:</span></label>
         <div class="col-xs-7">
@@ -43,8 +46,9 @@
             <input type="text" class="form-control" id="attendeePw" name="attendeePw"  value="[[+attendeePw]]" placeholder=""  required/>
         </div>
     </div>
+    -->
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="welcomeMsg" class="col-xs-5 control-label"><span>Приветствие:</span></label>
+        <label for="welcomeMsg" class="col-xs-5 control-label"><span>Приветствие в чате:</span></label>
         <div class="col-xs-7">
             <input type="text" class="form-control" id="welcomeMsg" name="welcomeMsg" value="[[+welcomeMsg]]" placeholder="" />
         </div>

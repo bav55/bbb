@@ -17,6 +17,14 @@ $tmp = array(
         'file' => 'paymentPage',
         'description' => 'Шаблон страницы Оплата участия в мероприятии',
     ),
+    'authorPage.tpl' => array(
+        'file' => 'authorPage',
+        'description' => 'Шаблон страницы Автора-ведущего',
+    ),
+    'mainPage.tpl' => array(
+        'file' => 'mainPage',
+        'description' => 'Шаблон главной страницы',
+    ),
 );
 foreach ($tmp as $k => $v) {
     /* @avr modTemplate $template */

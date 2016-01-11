@@ -13,7 +13,7 @@ if($allFormFields['email_']!=''){ return false;}        //spam-проверка
 foreach ($allFormFields as $field=>$value){
     if ($field !== 'email_' && $field !== 'submit'){
         if (is_string($value)){
-            $value = addslashes(trim($value));
+            $value = trim($value);
         }
         $newMeeting-> set($field, $value);
     }

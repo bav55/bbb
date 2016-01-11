@@ -1,5 +1,5 @@
 <?php
-$id_resource = $hook -> getValue('id_resource');
+$id_resource =$_POST['id_resource'];
 if($resource = $modx -> getObject('modResource',$id_resource)){
     $content_resource = $_POST['content_meeting'];
     $content_resource = strip_tags($content_resource,'<p><a><div><b><i><h4><u><img>');
@@ -20,9 +20,14 @@ if($resource = $modx -> getObject('modResource',$id_resource)){
     $resource->setContent($content_resource);
     if ($resource->save() === false){
         $modx->log(xPDO::LOG_LEVEL_ERROR,$modx->error->message);
-        return false;
+        $hook->addError('error_message',$modx->error->message);
+        return $hook->hasErrors();
     }
     //очистим кэш ресурса
     $modx->runSnippet('clearCacheResource',array('resource' => $resource));
+    $results = $modx->cacheManager->generateContext($resource->context_key);
+    $modx->context->resourceMap = $results['resourceMap'];
+    $modx->context->aliasMap = $results['aliasMap'];
     return true;
 }
+return false;

@@ -97,6 +97,24 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'show_in_tree' => 1,
                 'alias' => 'pay',
             ),
+            'allMeetingsPage' => array(
+                'pagetitle' => 'Все мероприятия',
+                'description' => 'Каталог всех мероприятий',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 1,
+                'show_in_tree' => 1,
+                'alias' => 'all-meetings',
+            ),
+            'allAuthorsPage' => array(
+                'pagetitle' => 'Авторы (ведущие)',
+                'description' => 'Страница Все авторы',
+                'isfolder' => 0,
+                'published' => 1,
+                'hidemenu' => 1,
+                'show_in_tree' => 1,
+                'alias' => 'all-authors',
+            ),
         );
         foreach ($tmp as $k => $v) {
             /* @var modResource $resource */

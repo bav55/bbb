@@ -2,6 +2,10 @@
 $allFormFields = $hook->getValues();
 if($allFormFields['email_']!=''){ return false;}        //spam-проверка
 $meeting = $modx->getObject('Meetings',array('id_meeting' => $allFormFields['id_meeting']));
+$meeting_creator = $modx->getObject('modUser',$meeting->get('id_creator'));
+$profile = $meeting_creator->getOne('Profile');
+$extended = $profile->get('extended');
+$message = $extended['invitation_template'];
 foreach($allFormFields['clients'] as $key => $value){
     $client = $modx->getObject('Clients', array('id_client' => $value));
     $placeholders = array(
@@ -18,8 +22,8 @@ foreach($allFormFields['clients'] as $key => $value){
                                                                                                                         'id_waitpage' => $modx->getOption('bbb_id_waitpage'),
                                                                                                                    )
                                                                       ),
-        '%email_creator%' => $modx->user->Profile->email,
-        '%fullname_creator%' => $modx->user->Profile->fullname,
+        '%email_creator%' => $profile->get('email'),
+        '%fullname_creator%' =>$profile->get('fullname'),
         '%br%' => '<br>',
     );
     $message = $allFormFields['message'];
@@ -47,10 +51,10 @@ foreach($allFormFields['clients'] as $key => $value){
     $modx->getService('mail', 'mail.modPHPMailer');
     $modx->mail->set(modMail::MAIL_BODY,$output);
     $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
-    $modx->mail->set(modMail::MAIL_FROM_NAME,$modx->user->Profile->fullname);
+    $modx->mail->set(modMail::MAIL_FROM_NAME,$profile->get('fullname'));
     $modx->mail->set(modMail::MAIL_SUBJECT,'Приглашение на мероприятие "'.$meeting->get('name_meeting').'"');
     $modx->mail->address('to',$client->get('email'));
-    $modx->mail->address('reply-to',$modx->user->Profile->email);
+    $modx->mail->address('reply-to',$profile->get('email'));
     $modx->mail->setHTML(true);
     if (!$modx->mail->send()) {
         $modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$modx->mail->mailer->ErrorInfo);

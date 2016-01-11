@@ -1,4 +1,5 @@
-<form class="form" method="post" action="" enctype="multipart/form-data">
+<h4>Разместите информацию о мероприятии</h4>
+<form class="form" method="post" action="[[~[[*id]]]]" enctype="multipart/form-data">
     <input style="display:none;" type="text" name="email_" value="" />
     <input type="hidden" name ="id_resource" value="[[*id]]">
     <div class="form-group">

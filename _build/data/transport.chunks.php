@@ -99,6 +99,26 @@ $tmp = array(
         'file' => 'form.login',
         'description' => 'Чанк оформления формы входа  ведущего (автора) на сайте',
     ),
+    'all-meetings.item.tpl' => array(
+        'file' => 'all-meetings.item',
+        'description' => 'Чанк оформления мероприятия в каталоге ВСЕХ мероприятих',
+    ),
+    'author.tpl' => array(
+        'file' => 'author',
+        'description' => 'Чанк оформления Страницы каждого ведущего',
+    ),
+    'all-authors.item.tpl' => array(
+        'file' => 'all-authors.item',
+        'description' => 'Чанк оформления каждого автора в каталоге авторов-ведущих',
+    ),
+    'new_meetings.tpl' => array(
+        'file' => 'new_meetings',
+        'description' => 'Чанк оформления блока Ближайшие события на главной странице',
+    ),
+    'tpl.request.email' => array(
+        'file' => 'tpl.request.email',
+        'description' => 'Чанк оформления email-уведомления ведущему о поступившей заявке',
+    ),
 );
 
 // Save chunks for setup options

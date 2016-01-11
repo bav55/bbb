@@ -35,6 +35,10 @@ if($action->save() === false){
 }
 sleep(1);
 $meeting = $modx->getObject('Meetings',array('id_meeting' =>$allFormFields['id_meeting'] ));
+$meeting_creator = $modx->getObject('modUser',$meeting->get('id_creator'));
+$profile = $meeting_creator->getOne('Profile');
+$extended = $profile->get('extended');
+$message = $extended['invitation_template'];
 //если мероприятие бесплатное, сразу отправим приглашение пользователю.
 if($meeting->get('cost') == 0){ // мероприятие бесплатное
     //автоматически отправим приглашение подавшему заявку
@@ -52,14 +56,11 @@ if($meeting->get('cost') == 0){ // мероприятие бесплатное
                     'id_waitpage' => $modx->getOption('bbb_id_waitpage'),
                 )
             ),
-        '%email_creator%' => $modx->user->Profile->email,
-        '%fullname_creator%' => $modx->user->Profile->fullname,
+        '%email_creator%' =>  $profile->get('email'),
+        '%fullname_creator%' =>  $profile->get('fullname'),
         '%br%' => '<br>',
     );
-        $profile = $modx->user->Profile;
-        $extended = $profile->get('extended');
-        $message = $extended['invitation_template'];
-    foreach($placeholders as $pkey => $pvalue){
+       foreach($placeholders as $pkey => $pvalue){
         $message = str_replace($pkey, $pvalue, $message);
     }
     // создадим временный чанк
@@ -73,10 +74,10 @@ if($meeting->get('cost') == 0){ // мероприятие бесплатное
     $modx->getService('mail', 'mail.modPHPMailer');
     $modx->mail->set(modMail::MAIL_BODY,$output);
     $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
-    $modx->mail->set(modMail::MAIL_FROM_NAME,$modx->user->Profile->fullname);
+    $modx->mail->set(modMail::MAIL_FROM_NAME,$profile->get('fullname'));
     $modx->mail->set(modMail::MAIL_SUBJECT,'Приглашение на мероприятие "'.$meeting->get('name_meeting').'"');
     $modx->mail->address('to',$client->get('email'));
-    $modx->mail->address('reply-to',$modx->user->Profile->email);
+    $modx->mail->address('reply-to',$profile->get('email'));
     $modx->mail->setHTML(true);
     if (!$modx->mail->send()) {
         $modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$modx->mail->mailer->ErrorInfo);
@@ -110,10 +111,10 @@ else{ //мероприятия платное -
     $modx->getService('mail', 'mail.modPHPMailer');
     $modx->mail->set(modMail::MAIL_BODY,$message);
     $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
-    $modx->mail->set(modMail::MAIL_FROM_NAME,$modx->user->Profile->fullname);
+    $modx->mail->set(modMail::MAIL_FROM_NAME,$profile->get('fullname'));
     $modx->mail->set(modMail::MAIL_SUBJECT,'Ваша заявка на участие отправлена ведущему.');
     $modx->mail->address('to',$client->get('email'));
-    $modx->mail->address('reply-to',$modx->user->Profile->email);
+    $modx->mail->address('reply-to',$profile->get('email'));
     $modx->mail->setHTML(true);
     if (!$modx->mail->send()) {
         $modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$modx->mail->mailer->ErrorInfo);

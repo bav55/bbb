@@ -37,8 +37,9 @@
         [[$tpl.form.request?]]
         [[!FormIt?
         &hooks=`spam,email,receivedRequest`
-        &emailTo=`bav55@yandex.ru`
-        &emailSubject=`Поступила новая заявка на участие`
+        &validate=`firstname:required,lastname:required,email:email:required`
+        &emailTo=`[[+email_creator]]`
+        &emailSubject=`Поступила новая заявка на участие  вашем мероприятии`
         &emailTpl=`tpl.request.email`
         &submitVar=`receivedRequest-submit`
         &successMessage=`<div class="alert alert-success">
@@ -245,13 +246,14 @@
 &hooks=`sentInvitation`
 &submitVar=`actions_meeting-submit`
 ]]
-<div class="row" style="background-color: #FFFFCC; height: 400px; margin-top: 20px;">
+<div class="row" style="background-color: #FFFFCC; height: 430px; margin-top: 20px;">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         [[!$tpl.meeting.edit.content?]]
 
         [[!FormIt?
         &hooks=`spam,editContentMeeting,redirect`
         &submitVar=`editContent-submit`
+        &id_resource=`[[+id_resource]]`
         &redirectTo=`[[*id]]`
         ]]
     </div>
@@ -259,6 +261,7 @@
 [[!$tpl.form.edit.meeting.modal?id_meeting=[[+id_meeting]]]]
 [[!FormIt?
 &hooks=`spam,editMeeting,redirect`
+&validate=`name_meeting:required,date_meeting:required,duration:required,maxParticipants:required`
 &submitVar=`editMeeting-submit`
 &redirectTo=`[[*id]]`
 ]]
