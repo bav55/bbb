@@ -42,6 +42,13 @@ $message = $extended['invitation_template'];
 //если мероприятие бесплатное, сразу отправим приглашение пользователю.
 if($meeting->get('cost') == 0){ // мероприятие бесплатное
     //автоматически отправим приглашение подавшему заявку
+    $link = $modx->runSnippet('getJoinMeetingUrl',array(
+        'id_meeting' => $meeting->get('id_meeting'),
+        'id_client' => $client->get('id_client'),
+        'user_type' => 'attendee',
+        'id_waitpage' => $modx->getOption('bbb_id_waitpage'),
+    ));
+    $link_string = '<a href="'.$link.'">Вход на мероприятие</a>';
     $placeholders = array(
         '%firstname%' => $client->get('firstname'),
         '%lastname%' => $client->get('lastname'),
@@ -49,13 +56,7 @@ if($meeting->get('cost') == 0){ // мероприятие бесплатное
         '%date_meeting%' => date('d.m.Y, H:i',strtotime($meeting->get('date_meeting'))),
         '%duration%' => $meeting->get('duration'),
         '%page_meeting%' => $modx->getOption('site_url').$modx->makeUrl($meeting->get('id_resource')),
-        '%link_meeting%' => $modx->runSnippet('getJoinMeetingUrl',array(
-                    'id_meeting' => $meeting->get('id_meeting'),
-                    'id_client' => $client->get('id_client'),
-                    'user_type' => 'attendee',
-                    'id_waitpage' => $modx->getOption('bbb_id_waitpage'),
-                )
-            ),
+        '%link_meeting%' => $link_string,
         '%email_creator%' =>  $profile->get('email'),
         '%fullname_creator%' =>  $profile->get('fullname'),
         '%br%' => '<br>',

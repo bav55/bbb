@@ -4,25 +4,25 @@
     <input type="hidden" name="moderatorPw"  value="qwerty"  required/>
     <input type="hidden" name="attendeePw"  value="asdfgh"  required/>
     <div class="form-group col-xs-12 col-sm 12">
-        <label for="name_meeting" class="col-xs-3 col-sm-3 control-label"><span>Название мероприятия:</span></label>
+        <label for="name_meeting" class="col-xs-3 col-sm-3 control-label"><span>Название встречи:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-9 col-sm-9">
             <input type="text" class="form-control" id="name_meeting" name="name_meeting" value="[[+name_meeting:htmlent]]" placeholder="Укажите название мероприятия" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="date_meeting" class="col-xs-5 control-label"><span>Дата и время начала:</span></label>
+        <label for="date_meeting" class="col-xs-5 control-label"><span>Дата и время начала:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-7">
             <input type="datetime-local" class="form-control" id="date_meeting" name="date_meeting" value="[[+date_meeting:strtotime:date=`%Y-%m-%dT%H:%M`]]" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="duration" class="col-xs-5 control-label"><span>Продолжительность:</span></label>
+        <label for="duration" class="col-xs-5 control-label"><span>Продолжительность:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-7">
             <input type="number" min="0" max="180" step="10" class="form-control" id="duration" name="duration"  value="[[+duration]]"  placeholder="в минутах" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="maxParticipants" class="col-xs-5 control-label"><span>Количество участников:</span></label>
+        <label for="maxParticipants" class="col-xs-5 control-label"><span>Количество участников:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-7">
             <input type="number" min="0" max="100" step="10" class="form-control" id="maxParticipants" name="maxParticipants"  value="[[+maxParticipants]]" placeholder="" required>
         </div>

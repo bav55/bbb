@@ -91,6 +91,10 @@ $tmp = array(
         'file' => 'enablehtml',
         'description' => 'Работает как PreHook у UpdateProfile - позволяет оставлять требуемые html-теги в данных',
     ),
+    'getMeetings' => array(
+        'file' => 'getMeetings',
+        'description' => 'Показывает активные встречи на сервере BBB, ответ (про каждую встречу) парсит в чанк (параметр tpl)',
+    ),
 );
 
 foreach ($tmp as $k => $v) {

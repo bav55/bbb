@@ -2,19 +2,19 @@
     <input style="display:none;" type="text" name="email_" value="" />
     <input type="hidden" name="id_client" value="[[+id_client]]">
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="firstname"  class="col-xs-5 control-label"><span>Имя Отчество:</span></label>
+        <label for="firstname"  class="col-xs-5 control-label"><span>Имя Отчество:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-7">
             <input type="text" class="form-control" id="firstname" name="firstname" value="[[+firstname]]" placeholder="" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="lastname" class="col-xs-5 control-label"><span>Фамилия:</span></label>
+        <label for="lastname" class="col-xs-5 control-label"><span>Фамилия:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-7">
             <input type="text" class="form-control" id="lastname" name="lastname" value="[[+lastname]]" required>
         </div>
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label for="email" class="col-xs-5 control-label"><span>E-mail:</span></label>
+        <label for="email" class="col-xs-5 control-label"><span>E-mail:<span class="text-danger"> *</span></span></label>
         <div class="col-xs-7">
             <input type="email" class="form-control" id="email" name="email"  value="[[+email]]"  required>
         </div>

@@ -68,7 +68,7 @@ class BigBlueButton {
         */
         if (extension_loaded('curl')) {
             $ch = curl_init() or die ( curl_error() );
-            $timeout = 20;
+            $timeout = 10;
             curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt( $ch, CURLOPT_URL, $url );
             curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -84,6 +84,10 @@ class BigBlueButton {
                 ));
             }
             $data = curl_exec( $ch );
+           if($data === false){
+               echo 'BBB-api error: _processXmlResponce<br>curl_error='.curl_error($ch);
+               die();
+           }
             curl_close( $ch );
 
             if($data)

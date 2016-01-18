@@ -29,6 +29,27 @@ switch ($modx->event->name) {
                 $profile->set('extended', $extended);
                 $profile->save();
                 //пришла идея - реализовать здесь отправку сообщения администратору сайта о новой регистрации (на адрес Планфикса)
+                $message = 'username: '.$user->Profile->email;
+                $message .= '<br>ФИО:'.$user->Profile->fullname;
+                $message .= '<br>email:'.$user->Profile->email;
+                $message .= '<br>date:'.date('d.m.Y H:i:s');
+                $uniqid = uniqid();
+                $props = Array();
+                $chunk = $modx->newObject('modChunk', array('name' => "{tmp}-{$uniqid}"));
+                $chunk->setCacheable(false);
+                $output = $chunk->process($props, $message);
+                $modx->getService('mail', 'mail.modPHPMailer');
+                $modx->mail->set(modMail::MAIL_BODY,$output);
+                $modx->mail->set(modMail::MAIL_FROM, $modx->getOption('emailsender'));
+                $modx->mail->set(modMail::MAIL_FROM_NAME,$profile->get('fullname'));
+                $modx->mail->set(modMail::MAIL_SUBJECT,$profile->get('fullname').' - Новая регистрация пользователя на сайте. ');
+                $modx->mail->address('to','support@web-meeting.ru');
+                $modx->mail->setHTML(true);
+                if (!$modx->mail->send()) {
+                    $modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$modx->mail->mailer->ErrorInfo);
+                    return false;
+                }
+                $modx->mail->reset();
             }
         }
         break;

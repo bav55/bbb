@@ -119,6 +119,10 @@ $tmp = array(
         'file' => 'tpl.request.email',
         'description' => 'Чанк оформления email-уведомления ведущему о поступившей заявке',
     ),
+    'getMeetings.item.tpl' => array(
+        'file' => 'getMeetings.item',
+        'description' => 'Чанк оформления вывода сниппета getMeetings',
+    ),
 );
 
 // Save chunks for setup options

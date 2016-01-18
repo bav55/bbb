@@ -2,7 +2,7 @@
 $id_resource =$_POST['id_resource'];
 if($resource = $modx -> getObject('modResource',$id_resource)){
     $content_resource = $_POST['content_meeting'];
-    $content_resource = strip_tags($content_resource,'<p><a><div><b><i><h4><u><img>');
+    $content_resource = strip_tags($content_resource,'<p><a><div><b><i><h4><u><img><blockquote><small><cite><ul><li><ol>');
     // загрузим изображение  и добавим к ресурсу через TV
     if(isset($_FILES['image_meeting'])){
         $sourceId = $modx -> getOption('bbb_meeting_photo_source');
