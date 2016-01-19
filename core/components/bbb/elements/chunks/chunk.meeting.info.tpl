@@ -97,7 +97,7 @@
                     "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
                     }`
                     &where=`["id_meeting = [[+id_meeting]] and (Actiontype.name = 'RECEIVED_REQUEST' or Actiontype.name = 'SENT_INVITATION')"]`
-                    &sortby=`lastname, timestamp_action`
+                    &sortby=`timestamp_action`
                     &sortdir=`DESC`
                     &showLog=`0`
                     &limit=`10`
@@ -154,7 +154,7 @@
                     "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
                     }`
                     &where=`["id_meeting = [[+id_meeting]] and Actiontype.name in ('MEETING_IS_CREATED','MEETING_STARTED','USER_INVOLVED_MEETING','USER_LEFT_MEETING','MEETING_ENDED')"]`
-                    &sortby=`lastname, timestamp_action`
+                    &sortby=`timestamp_action`
                     &sortdir=`DESC`
                     &showLog=`0`
                     &limit=`10`
@@ -211,7 +211,7 @@
                     "Actions": "*","Client": "firstname,lastname,email","Actiontype":"id,name"
                     }`
                     &where=`["id_meeting = [[+id_meeting]] and Actiontype.name = 'USER_SENT_REVIEW'"]`
-                    &sortby=`lastname, timestamp_action`
+                    &sortby=`timestamp_action`
                     &sortdir=`DESC`
                     &showLog=`0`
                     &limit=`10`

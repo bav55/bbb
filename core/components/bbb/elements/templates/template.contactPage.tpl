@@ -49,7 +49,7 @@
                 "Meeting":"id_meeting,name_meeting,date_meeting",
                 "Actiontype":"id,name"
                 }`
-                &where=`["Actions.id_client = [[!getUrlParam?&name=`id_client` &int=`1`]] AND Client.id_creator = [[+modx.user.id]]"]`
+                &where=`["Actions.id_client = [[!getUrlParam?&name=`id_client` &int=`1`]] AND Client.id_creator = [[!+modx.user.id]]"]`
                 &sortby=`timestamp_action`
                 &sortdir=`DESC`
                 &showLog=`0`
